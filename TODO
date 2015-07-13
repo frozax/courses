@@ -1,0 +1,30 @@
+US: Définition mockup interface
+ * wx.BoxSizer(wx.HORIZONTAL)
+    wx.BoxSizer(wx.VERTICAL)
+     wx.Grid
+     wx.TextInput (avec auto complétion)
+    wx.BoxSizer(wx.VERTICAL)
+     wx.List
+     wx.Button (print)
+
+US: Je veux voir tous les produits disponibles dans le magasin, triés par rayon ou alphabétiquement
+
+US: Je veux voir l'état actuel de ma liste
+
+US: Je veux ajouter un produit en cliquant sur la liste de produits
+
+US: Je veux ajouter un produit en tapant son nom partiellement
+
+US: Je veux entrer un nouveau produit si il est inconnu
+
+US: Je veux pouvoir mettre un produit juste une fois, sans savoir son rayon
+
+US: Je veux une image à côté de chaque produit (par defaut en cherchant sur google image)
+
+US: Je veux pouvoir ajouter un commentaire (chiffre) à côté de chaque élément de la liste
+
+US: Je veux générer un pdf de ma liste
+
+US: Je veux enregistrer (ou conserver) ma liste sélectionnée en cours
+
+US: Je veux pouvoir dicter ma liste par mon micro
