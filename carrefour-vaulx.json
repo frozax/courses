@@ -1,0 +1,96 @@
+{
+	"rayons": [
+	{
+		"name": "75",
+		"products": ["Carterie", "Beaux-arts", "Cycle enfant", "Roller", "Trotinette"]
+	},
+	{
+		"name": "73",
+		"products": ["Cahier", "Classement", "Ecriture", "Colle", "Scotch"]
+	},
+	{
+		"name": "71",
+		"products": ["Filtre piscine"]
+	},
+	{
+		"name": "Saisonnier"
+	},
+	{
+		"name": "59",
+		"products": ["Jouets", "Jeux société"]
+	},
+	{
+		"name": "57"
+	},
+	{
+		"name": "55",
+		"products": ["Emballage alimentaire", "Café", "Thé", "Couverts"]
+	},
+	{
+		"name": "53",
+		"products": ["Autocuiseur", "Vaisselle"]
+	},
+	{
+		"name": "51",
+		"products": ["Cadre", "Sous-verre", "Luminaire", "Rangement plastique"]
+	},
+	{
+		"name": "49",
+		"products": ["Salle de bain", "Etendage", "Cintre", "Repassage", "Eau déminéralisée"]
+	},
+	{
+		"name": "47"
+	},
+	{
+		"name": "45",
+		"products": ["Torchon", "House de couette", "Drap housse", "Mercerie"]
+	},
+	{
+		"name": "43",
+		"products": ["Gel douche", "Dentifrice", "Brosse à dent", "Savon"]
+	},
+	{
+		"name": "41",
+		"products": ["Mouchoirs", "Déodorant", "Rasoir", "Gel de rasage"]
+	},
+	{
+		"name": "39",
+		"products": ["Brosse", "Coloration", "Shampooing", "Gel (cheveux)"]
+	},
+	{
+		"name": "37",
+		"products": ["Maquillage", "Coton-tige", "Soin visage", "Crème solaire"]
+	},
+	{
+		"name":"35",
+		"products": ["Sac poubelle", "Eponges", "Sopalin", "Essuie-tout", "PQ"]
+	},
+	{
+		"name": "33",
+		"products": ["Insecticide", "Eau de javel", "Désodorisant", "Nettoyant sol"]
+	},
+	{
+		"name": "31",
+		"products": ["Lessive", "Adoucissant", "Liquide vaisselle", "Sel lave-vaisselle", "tablette lave-vaisselle", "produit lave-vaisselle"]
+	},
+	{
+		"name": "poissons",
+		"products": ["sushis", "rillette saumon", "saumon fumé", "lardon saumon"]
+	},
+	{
+		"name": "fruits et légumes",
+		"products": ["melon", "oignon", "patate", "tomate", "tomate cerise", "concombre", "citron", "salade", "courgette", "poireau", "carotte", "poivron"]
+	},
+	{
+		"name": "charcuterie fraiche",
+		"products": ["entrées", "traiteur"]
+	},
+	{
+		"name": "fromagerie au détail",
+		"products": ["mimolette", "gouda"]
+	},
+	{
+		"temps de la video": "1:42"
+	}
+	]
+}
