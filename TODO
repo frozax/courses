@@ -1,11 +1,4 @@
 US: Définition mockup interface
- * wx.BoxSizer(wx.HORIZONTAL)
-    wx.BoxSizer(wx.VERTICAL)
-     wx.Grid
-     wx.TextInput (avec auto complétion)
-    wx.BoxSizer(wx.VERTICAL)
-     wx.List
-     wx.Button (print)
 
 US: Je veux voir tous les produits disponibles dans le magasin, triés par rayon ou alphabétiquement
 

@@ -2,14 +2,21 @@
 
 import wx
 
-from ui import GUI, ID_TEXTCTRL_ENTER_PRODUCT
+from ui import GUI
 
-def toto(event):
-    print "TOTO"
+def product_text_text_changed(text):
+    app.set_status(text, 0)
+
+def product_text_enter_pressed(text):
+    app.set_status(text, 0)
+
+app = GUI(
+    {
+        "product_text_enter_pressed": product_text_enter_pressed,
+        "product_text_text_changed": product_text_text_changed
+    })
 
 def main():
-    app = GUI()
-    app.Bind(wx.EVT_TEXT_ENTER, toto, id=ID_TEXTCTRL_ENTER_PRODUCT)
     app.MainLoop()
 
 if __name__ == '__main__':
