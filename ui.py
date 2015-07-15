@@ -1,15 +1,33 @@
 import wx
 
+class ProductsList(wx.BoxSizer):
+    def __init__(self, parent):
+        wx.BoxSizer.__init__(self, wx.VERTICAL)
+        self.parent = parent
+
+    def click(self, event):
+        eo = event.GetEventObject()
+        text = eo.GetLabel()
+        GUI.msg_box(text)
+
+    def set_data(self, data):
+        self.DeleteWindows()
+        for text, selectable, selected in data:
+            print text
+            st = wx.StaticText(self.parent, label=text)
+            if selectable:
+                st.Bind(wx.EVT_LEFT_DOWN, self.click)
+            self.Add(st)
+
+        self.parent.Fit()
+
 
 class FinalList(wx.BoxSizer):
     def __init__(self, parent):
         wx.BoxSizer.__init__(self, wx.VERTICAL)
         self.parent = parent
 
-    def refresh(self, data):
-        data = [("desserts fr", ""),
-                ("jambon", "2x4")]
-
+    def set_data(self, data):
         self.DeleteWindows()
 
         for val, comment in data:
@@ -18,7 +36,7 @@ class FinalList(wx.BoxSizer):
             horiz_sizer.Add(wx.TextCtrl(self.parent, value=comment))
             self.Add(horiz_sizer)
 
-        self.Layout()
+        self.parent.Fit()
 
 class Frame(wx.Frame):
 
@@ -42,22 +60,32 @@ class Frame(wx.Frame):
         main_sizer.Add(right_sizer)
         self.SetSizer(main_sizer)
 
+        # right side: list itself (with comments), and print button
+        self.final_list = FinalList(self)
+        right_sizer.Add(self.final_list)
+
         # left side: list and input box
+        self.products_list = ProductsList(self)
+        left_sizer.Add(self.products_list)
+
         self.product_text = wx.TextCtrl(self, style=wx.TE_PROCESS_ENTER)
         self.product_text.SetHint("Entre un produit")
         self.product_text.Bind(wx.EVT_TEXT, self.product_text_text_changed)
         self.product_text.Bind(wx.EVT_TEXT_ENTER, self.product_text_enter_pressed)
         left_sizer.Add(self.product_text)
 
-        # right side: list itself (with comments), and print button
-        final_list = FinalList(self)
-        final_list.refresh({})
-        right_sizer.Add(final_list)
-
         print_btn = wx.Button(self, -1, "Imprimer")
         right_sizer.Add(print_btn)
 
         self.CreateStatusBar()
+
+    def refresh_final_list(self):
+        data = self.callbacks["get_final_list"]()
+        self.final_list.set_data(data)
+
+    def refresh_products_list(self):
+        data = self.callbacks["get_products_list"]()
+        self.products_list.set_data(data)
 
 
 class GUI(wx.App):
@@ -73,3 +101,13 @@ class GUI(wx.App):
 
     def set_status(self, status, ith):
         self.frame.GetStatusBar().SetStatusText(status, ith)
+
+    def refresh(self):
+        self.frame.refresh_products_list()
+        self.frame.refresh_final_list()
+
+    @staticmethod
+    def msg_box(text):
+        dlg = wx.MessageDialog(None, text, "Message Box", wx.OK | wx.ICON_INFORMATION)
+        dlg.ShowModal()
+        dlg.Destroy()
