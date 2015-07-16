@@ -1,10 +1,18 @@
+Model: data, updates the view
+UI: => View
+Controller: receive callbacks from view, and changes the model
+
+model: data, when it changes, fires messages to the view (pubsub)
+ui: set callback used in the controller
+controller: after callbacks, updates the model
+
 US: Définition mockup interface
 
 US: Je veux voir tous les produits disponibles dans le magasin, triés par rayon ou alphabétiquement
 
 US: Je veux voir l'état actuel de ma liste
 
-US: Je veux ajouter un produit en cliquant sur la liste de produits
+US: Je veux ajouter un produit en cliquant sur la liste de produits (icone main quand on se pose dessus)
 
 US: Je veux ajouter un produit en tapant son nom partiellement
 
