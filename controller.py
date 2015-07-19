@@ -13,7 +13,20 @@ class Controller(object):
 
     def print_pressed(self):
         self.view.set_status("print pressed")
+        self.model.DBG_add_product_in_first_aisle()
+        self.refresh_both_lists()
 
     def shop_list_clicked(self, item):
         self.model.shop_list_item_toggle(item)
+        self.refresh_both_lists()
+
+    def user_list_comment_entered(self, item, comment):
+        self.model.update_product_comment(item, comment)
+
+    def user_list_clicked(self, item):
+        self.model.user_list_remove_item(item)
+        self.refresh_both_lists()
+
+    def new_list(self):
+        self.model.clear_user_list()
         self.refresh_both_lists()
