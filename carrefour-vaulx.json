@@ -1,6 +1,14 @@
 {
 	"rayons": [
 	{
+		"name": "sport",
+		"products": ["pompe vélo"]
+	},
+	{
+		"name": "boucher",
+		"products": ["poulet", "steak haché", "steak", "saucisses"]
+	},
+	{
 		"name": "75",
 		"products": ["Carterie", "Beaux-arts", "Cycle enfant", "Roller", "Trotinette"]
 	},
@@ -13,11 +21,39 @@
 		"products": ["Filtre piscine"]
 	},
 	{
+		"name": "informatique",
+		"products": ["jeu vidéo", "informatique", "téléphone", "télé"]
+	},
+	{
+		"name": "livres",
+		"products": ["livre"]
+	},
+	{
+		"name": "66",
+		"products": ["lave glace", "lubrifiant", "accessoire auto"]
+	},
+	{
+		"name": "64",
+		"products": ["colle", "scotch", "peinture", "quincaillerie"]
+	},
+	{
+		"name": "62",
+		"products": ["piles", "ampoule", "tournevis"]
+	},
+	{
 		"name": "Saisonnier"
+	},
+	{
+		"name": "60",
+		"products": ["lingerie"]
 	},
 	{
 		"name": "59",
 		"products": ["Jouets", "Jeux société"]
+	},
+	{
+		"name": "bijouterie",
+		"products": ["bijou", "bracelet", "bague", "collier"]
 	},
 	{
 		"name": "57"
@@ -35,23 +71,47 @@
 		"products": ["Cadre", "Sous-verre", "Luminaire", "Rangement plastique"]
 	},
 	{
+		"name": "50",
+		"products": ["bottes", "chaussons"]
+	},
+	{
 		"name": "49",
 		"products": ["Salle de bain", "Etendage", "Cintre", "Repassage", "Eau déminéralisée"]
 	},
 	{
+		"name": "48",
+		"products": ["chaussures femme"]
+	},
+	{
 		"name": "47"
+	},
+	{
+		"name": "46",
+		"products": ["vêtement fille", "pyjama fille", "slip fille"]
 	},
 	{
 		"name": "45",
 		"products": ["Torchon", "House de couette", "Drap housse", "Mercerie"]
 	},
 	{
+		"name": "44",
+		"products": ["vêtement garçon", "pyjama garçon", "calecon garçon"]
+	},
+	{
 		"name": "43",
 		"products": ["Gel douche", "Dentifrice", "Brosse à dent", "Savon"]
 	},
 	{
+		"name": "42",
+		"products": ["lingettes", "couches"]
+	},
+	{
 		"name": "41",
 		"products": ["Mouchoirs", "Déodorant", "Rasoir", "Gel de rasage"]
+	},
+	{
+		"name": "40",
+		"products": ["habits bébé", "1er âge"]
 	},
 	{
 		"name": "39",
@@ -66,8 +126,16 @@
 		"products": ["Sac poubelle", "Eponges", "Sopalin", "Essuie-tout", "PQ"]
 	},
 	{
+		"name": "34",
+		"products": ["produits bio"]
+	},
+	{
 		"name": "33",
 		"products": ["Insecticide", "Eau de javel", "Désodorisant", "Nettoyant sol"]
+	},
+	{
+		"name": "32",
+		"products": ["oeufs", "crême liquide", "lait entier", "lait demi-écremé", "beurre", "crême fraîche"]
 	},
 	{
 		"name": "31",
@@ -75,7 +143,7 @@
 	},
 	{
 		"name": "poissons",
-		"products": ["sushis", "rillette saumon", "saumon fumé", "lardon saumon"]
+		"products": ["sushis", "rillette saumon", "saumon fumé", "lardon saumon", "surimi"]
 	},
 	{
 		"name": "fruits et légumes",
@@ -86,11 +154,99 @@
 		"products": ["entrées", "traiteur"]
 	},
 	{
+		"name": "30",
+		"products": ["fjord", "danette", "petit filou", "dessert fr"]
+	},
+	{
+		"name": "28",
+		"products": ["caprice", "fromage rapé", "yop", "compotes", "fromage blanc"]
+	},
+	{
 		"name": "fromagerie au détail",
 		"products": ["mimolette", "gouda"]
 	},
 	{
-		"temps de la video": "1:42"
+		"name": "surgelés",
+		"products": ["glace", "haricots verts", "crêpes"]
+	},
+	{
+		"name": "22",
+		"products": ["jambon", "cervelas", "knaki", "bacon", "saucisson"]
+	},
+	{
+		"name": "20",
+		"products": ["entrée"]
+	},
+	{
+		"name": "18",
+		"products": ["biscottes", "pain grillé", "compotes à boire", "fruits au sirop", "barre céréales"]
+	},
+	{
+		"name": "17",
+		"products": ["viennoiserie", "croissants", "pâtisserie", "baguette", "donuts", "gâteau", "pitch", "pain de mie"]
+	},
+	{
+		"name": "16",
+		"products": ["thé", "confiture", "café", "nesquik", "banania"]
+	},
+	{
+		"name": "15",
+		"products": ["produits du monde", "épicerie fine", "produits régionaux"]
+	},
+	{
+		"name": "14",
+		"products": ["bonbon", "tablette choco"]
+	},
+	{
+		"name": "13",
+		"products": ["riz", "sauce tomate", "pâtes", "purée"]
+	},
+	{
+		"name": "12",
+		"products": ["cookies", "goûters"]
+	},
+	{
+		"name": "11",
+		"products": ["potages", "conserves légumes", "thon", "sardine"]
+	},
+	{
+		"name": "10",
+		"products": ["champagne"]
+	},
+	{
+		"name": "9",
+		"products": ["huile", "sel", "ketchup", "mayo", "sauce barbecue", "épices"]
+	},
+	{
+		"name": "8",
+		"products": ["whisky", "pastis", "vin blanc", "vin rouge"]
+	},
+	{
+		"name": "7",
+		"products": ["jus d'orange", "sucre", "farine", "amandes poudes", "préparation dessert", "raisins secs", "vanille", "bougie anniv"]
+	},
+	{
+		"name": "6",
+		"products": ["halal"]
+	},
+	{
+		"name": "5",
+		"products": ["coca", "orangina", "canette"]
+	},
+	{
+		"name": "3",
+		"products": ["bière", "chips", "gâteaux apéros"]
+	},
+	{
+		"name": "2",
+		"products": ["nouritture animaux"]
+	},
+	{
+		"name": "1",
+		"products": ["eau", "eau petite bouteille", "champomy"]
+	},
+	{
+		"temps de la video": "5:32"
 	}
 	]
 }
