@@ -44,7 +44,7 @@ class ShopList(wx.Panel):
         # horiz sizer full of vert sizers
         self.sizer = wx.BoxSizer(wx.HORIZONTAL)
         self.SetSizer(self.sizer)
-        self.SetBackgroundColour((127, 127, 255))
+        #self.SetBackgroundColour((127, 127, 255))
 
         #btn = wx.Button(self, label="toto")
         #self.sizer.Add(btn, 1, wx.EXPAND)
@@ -74,7 +74,7 @@ class ShopList(wx.Panel):
                 ctrl = wx.StaticText(self, label=" ")
             else:
                 style = wx.ALIGN_RIGHT
-                ctrl = wx.StaticText(self, label=product, style=style, size=(120, -1))
+                ctrl = wx.StaticText(self, label=product, style=style, size=(130, -1))
                 if "product" in type_:
                     ctrl.Bind(wx.EVT_LEFT_DOWN, self.click_product)
                     if "selected" in type_:
@@ -102,7 +102,7 @@ class UserList(scrolled.ScrolledPanel):
     def __init__(self, parent):
         scrolled.ScrolledPanel.__init__(self, parent)
         self.parent = parent
-        self.SetBackgroundColour((128, 255, 128))
+        #self.SetBackgroundColour((128, 255, 128))
         self.sizer = wx.BoxSizer(wx.VERTICAL)
         self.SetSizer(self.sizer)
         self.set_data({})
@@ -162,6 +162,12 @@ class Frame(wx.Frame):
         self.right_side = wx.BoxSizer(wx.VERTICAL)
         self.user_list = UserList(self.panel)
         self.right_side.Add(self.user_list, 1, wx.EXPAND)
+        # add something to sort
+        user_list_sort_sizer = wx.BoxSizer(wx.HORIZONTAL)
+        user_list_sort_sizer.Add(wx.StaticText(self.panel, 0, "Tri:"), 0, wx.EXPAND)
+        self.user_list_sort = wx.ComboBox(self.panel, choices=["alphabétique", "magasin"], style=wx.CB_READONLY)
+        user_list_sort_sizer.Add(self.user_list_sort, 1, wx.EXPAND)
+        self.right_side.Add(user_list_sort_sizer, 0, wx.EXPAND)
 
         self.main_sizer.Add(self.right_side, 0, wx.EXPAND|wx.TOP|wx.BOTTOM|wx.RIGHT, 4)
 
@@ -215,8 +221,17 @@ class View(wx.App):
                                            controller.user_list_clicked)
 
         self.frame.new_list_cbk = controller.new_list
+        self.frame.Bind(wx.EVT_CLOSE, self.exit)
+        self.exit_cbk = controller.exit
+
+    def exit(self, event):
+        self.exit_cbk()
+        self.frame.Destroy()
 
     def msg_box(self, text):
         dlg = wx.MessageDialog(self.frame, text, "Message Box", wx.OK | wx.ICON_INFORMATION)
         dlg.ShowModal()
         dlg.Destroy()
+
+    def set_user_list_sort(self, sort_type):
+        self.frame.user_list_sort.Set

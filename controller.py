@@ -30,3 +30,7 @@ class Controller(object):
     def new_list(self):
         self.model.clear_user_list()
         self.refresh_both_lists()
+
+    def exit(self):
+        # app is exited
+        self.model.save()

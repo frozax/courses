@@ -1,16 +1,4 @@
-Model: data, updates the view
-UI: => View
-Controller: receive callbacks from view, and changes the model
-
-model: data, when it changes, fires messages to the view (pubsub)
-ui: set callback used in the controller
-controller: after callbacks, updates the model
-
-US: Définition mockup interface
-
 US: Je veux voir tous les produits disponibles dans le magasin, triés par rayon ou alphabétiquement
-
-US: Je veux voir l'état actuel de ma liste
 
 US: Je veux ajouter un produit en cliquant sur la liste de produits (icone main quand on se pose dessus)
 
@@ -22,10 +10,19 @@ US: Je veux pouvoir mettre un produit juste une fois, sans savoir son rayon
 
 US: Je veux une image à côté de chaque produit (par defaut en cherchant sur google image)
 
-US: Je veux pouvoir ajouter un commentaire (chiffre) à côté de chaque élément de la liste
-
-US: Je veux générer un pdf de ma liste
-
-US: Je veux enregistrer (ou conserver) ma liste sélectionnée en cours
+US: Je veux générer un pdf de ma liste (wx.Print)
 
 US: Je veux pouvoir dicter ma liste par mon micro
+
+US: utilisation d'un search ctrl (afficher liste des dernieres recherches)
+
+US: afficher le text en gras quand on est en train de taper qq chose dans le comment
+
+US: afficher en gras le moceau dans la liste quand on a la souris sur autre chose
+
+demos intéressante:s
+- ScrolledPanel
+- Resize
+- Layoutf
+- SearchCtrl
+- Sizers
