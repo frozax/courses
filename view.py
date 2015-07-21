@@ -2,6 +2,7 @@
 
 import wx
 import wx.lib.scrolledpanel as scrolled
+from TextCtrlAutoComplete import TextCtrlAutoComplete
 
 class SampleWindow(wx.PyWindow):
     """
@@ -150,12 +151,11 @@ class Frame(wx.Frame):
 
         # left side: product list and search box
         self.left_side = wx.BoxSizer(wx.VERTICAL)
-        #self.shop_list = SampleWindow(self.panel, "shop_list")
         self.shop_list = ShopList(self.panel)
 
         self.left_side.Add(self.shop_list, 1, wx.EXPAND)
-        self.search_ctrl = wx.SearchCtrl(self.panel)
-        self.left_side.Add(self.search_ctrl, 0, wx.EXPAND)
+        self.enter_product = TextCtrlAutoComplete(self.panel, choices=["a", "b", "abc", "ade", "ber"])
+        self.left_side.Add(self.enter_product, 0, wx.EXPAND)
 
         self.main_sizer.Add(self.left_side, 1, wx.EXPAND|wx.ALL, 4)
 
@@ -210,10 +210,10 @@ class View(wx.App):
 
     def setup_controller(self, controller):
         # set up callbacks for user interactions
-        self.frame.search_ctrl.Bind(wx.EVT_TEXT,
-                                     lambda evt: controller.product_text_text_changed(self.product_text.GetValue()))
-        self.frame.search_ctrl.Bind(wx.EVT_TEXT_ENTER,
-                                     lambda evt: controller.product_text_enter_pressed(self.product_text.GetValue()))
+        #self.frame.search_ctrl.Bind(wx.EVT_TEXT,
+        #                             lambda evt: controller.product_text_text_changed(self.product_text.GetValue()))
+        #self.frame.search_ctrl.Bind(wx.EVT_TEXT_ENTER,
+        #                             lambda evt: controller.product_text_enter_pressed(self.product_text.GetValue()))
         #self.frame.print_btn.Bind(wx.EVT_BUTTON,
         #                          lambda evt: controller.print_pressed())
         self.frame.shop_list.set_callback(controller.shop_list_clicked)
