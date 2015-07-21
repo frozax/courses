@@ -16,28 +16,23 @@ import locale, wx, sys
 
 import  wx.lib.mixins.listctrl  as  listmix
 
-class myListCtrl_(wx.SimpleHtmlListBox, listmix.ListCtrlAutoWidthMixin):
+class myListCtrl(wx.ListBox):
+    def __init__(self, parent, ID=-1, pos=wx.DefaultPosition,
+                 size=wx.DefaultSize, style=0):
+        wx.ListBox.__init__(self, parent=parent, id=ID, pos=pos, size=size, style=style)
+
+class myListCtrl_(wx.SimpleHtmlListBox):
     def __init__(self, parent, ID=-1, pos=wx.DefaultPosition,
                  size=wx.DefaultSize, style=0):
         wx.SimpleHtmlListBox.__init__(self, parent=parent, id=ID, pos=pos, size=size, style=style)
-        listmix.ListCtrlAutoWidthMixin.__init__(self)
 
-    def DeleteAllItems(self):
-        self.Clear()
-
-    def InsertColumn(self, idx, value):
-        pass
-
-    def SetStringItem(self, idx, col_val):
-        pass
-
-class myListCtrl(wx.ListCtrl, listmix.ListCtrlAutoWidthMixin):
+class myListCtrl_(wx.ListCtrl, listmix.ListCtrlAutoWidthMixin):
     def __init__(self, parent, ID=-1, pos=wx.DefaultPosition,
                  size=wx.DefaultSize, style=0):
         wx.ListCtrl.__init__(self, parent, ID, pos, size, style)
         listmix.ListCtrlAutoWidthMixin.__init__(self)
 
-class TextCtrlAutoComplete(wx.TextCtrl, listmix.ColumnSorterMixin):
+class TextCtrlAutoComplete(wx.TextCtrl):
 
     def __init__(self, parent, colNames=None, choices=None,
                  dropDownClick=True,
@@ -86,12 +81,6 @@ class TextCtrlAutoComplete(wx.TextCtrl, listmix.ColumnSorterMixin):
         self.dropdownlistbox = myListCtrl(self.dropdown, style=flags,
                                           pos=wx.Point(0, 0))
 
-        #initialize the parent
-        # TODO CHECK SIMPLIFICATION
-        ln = 1
-        #else: ln = len(choices)
-        listmix.ColumnSorterMixin.__init__(self, ln)
-
         #load the data
         self.SetChoices(choices)
 
@@ -110,22 +99,19 @@ class TextCtrlAutoComplete(wx.TextCtrl, listmix.ColumnSorterMixin):
             self.Bind(wx.EVT_LEFT_DOWN, self.onClickToggleDown, self)
             self.Bind(wx.EVT_LEFT_UP, self.onClickToggleUp, self)
 
-        self.dropdown.Bind(wx.EVT_LISTBOX, self.onListItemSelected, self.dropdownlistbox)
+        #self.dropdown.Bind(wx.EVT_LISTBOX, self.onListItemSelected, self.dropdownlistbox)
         self.dropdownlistbox.Bind(wx.EVT_LEFT_DOWN, self.onListClick)
         self.dropdownlistbox.Bind(wx.EVT_LEFT_DCLICK, self.onListDClick)
 
         self._ascending = True
 
-    def GetListCtrl(self):
-        return self.dropdownlistbox
-
     # -- event methods
     def onListClick(self, evt):
-        toSel, flag = self.dropdownlistbox.HitTest(evt.GetPosition())
+        toSel = self.dropdownlistbox.HitTest(evt.GetPosition())
         #no values on poition, return
-        if toSel == -1:
+        if toSel == wx.NOT_FOUND:
             return
-        self.dropdownlistbox.Select(toSel)
+        self.dropdownlistbox.SetSelection(toSel)
 
     def onListDClick(self, evt):
         self._setValueFromSelected()
@@ -153,13 +139,11 @@ class TextCtrlAutoComplete(wx.TextCtrl, listmix.ColumnSorterMixin):
                 found = True
             if found:
                 self._showDropDown(True)
-                item = self.dropdownlistbox.GetItem(numCh)
-                toSel = item.GetId()
-                self.dropdownlistbox.Select(toSel)
+                self.dropdownlistbox.SetSelection(numCh)
                 break
 
         if not found:
-            self.dropdownlistbox.Select(self.dropdownlistbox.GetFirstSelected(), False)
+            self.dropdownlistbox.SetSelection(wx.NOT_FOUND)
             if self._hideOnNoMatch:
                 self._showDropDown(False)
 
@@ -173,19 +157,19 @@ class TextCtrlAutoComplete(wx.TextCtrl, listmix.ColumnSorterMixin):
             left and right: move the search
         """
         skip = True
-        sel = self.dropdownlistbox.GetFirstSelected()
+        sel = self.dropdownlistbox.GetSelection()
         visible = self.dropdown.IsShown()
 
         KC = event.GetKeyCode()
         if KC == wx.WXK_DOWN:
-            if sel < (self.dropdownlistbox.GetItemCount() - 1):
-                self.dropdownlistbox.Select(sel+1)
+            if sel < (self.dropdownlistbox.GetCount() - 1):
+                self.dropdownlistbox.SetSelection(sel+1)
                 self._listItemVisible()
             self._showDropDown()
             skip = False
         elif KC == wx.WXK_UP:
             if sel > 0:
-                self.dropdownlistbox.Select(sel - 1)
+                self.dropdownlistbox.SetSelection(sel - 1)
                 self._listItemVisible()
             self._showDropDown()
             skip = False
@@ -223,7 +207,6 @@ class TextCtrlAutoComplete(wx.TextCtrl, listmix.ColumnSorterMixin):
         The items will be sorted case insensitively.
         '''
         self._choices = choices
-        self._multiChoices = None
         flags = wx.LC_REPORT | wx.LC_SINGLE_SEL | wx.LC_SORT_ASCENDING | wx.LC_NO_HEADER
         self.dropdownlistbox.SetWindowStyleFlag(flags)
 
@@ -238,20 +221,12 @@ class TextCtrlAutoComplete(wx.TextCtrl, listmix.ColumnSorterMixin):
 
         self._updateDataList(self._choices)
 
-        self.dropdownlistbox.InsertColumn(0, "")
-
-        for num, colVal in enumerate(self._choices):
-            index = self.dropdownlistbox.InsertStringItem(sys.maxint, colVal, -1)
-            self.dropdownlistbox.SetStringItem(index, 0, colVal)
-            self.dropdownlistbox.SetItemData(index, num)
+        self.dropdownlistbox.InsertItems(self._choices, pos=0)
 
         self._setListSize()
 
     def GetChoices(self):
-        if self._choices:
-            return self._choices
-        else:
-            return self._multiChoices
+        return self._choices
 
     def SetSelectCallback(self, cb=None):
         self._selectCallback = cb
@@ -269,13 +244,11 @@ class TextCtrlAutoComplete(wx.TextCtrl, listmix.ColumnSorterMixin):
         Sets the wx.TextCtrl value from the selected wx.ListCtrl item.
         Will do nothing if no item is selected in the wx.ListCtrl.
         '''
-        sel = self.dropdownlistbox.GetFirstSelected()
-        if sel > -1:
-            itemtext = self.dropdownlistbox.GetItem(sel, 0).GetText()
+        sel = self.dropdownlistbox.GetSelection()
+        if sel != wx.NOT_FOUND:
+            itemtext = self.dropdownlistbox.GetString(sel)
             if self._selectCallback:
-                dd = self.dropdownlistbox
-                values = [dd.GetItem(sel, 0).GetText()]
-                self._selectCallback(values)
+                self._selectCallback(itemtext)
 
             self.SetValue(itemtext)
             self.SetInsertionPointEnd()
@@ -300,19 +273,24 @@ class TextCtrlAutoComplete(wx.TextCtrl, listmix.ColumnSorterMixin):
             else:
                 self.dropdown.SetPosition(wx.Point(x, y - height - size.GetHeight()))
         self.dropdown.Show(show)
+        # TODO : do something?
+        #if show:
+        #    self.dropdown.Bind(wx.EVT_LISTBOX, self.onListItemSelected, self.dropdownlistbox)
+        #else:
+        #    pass
 
     def _listItemVisible(self):
         '''
         Moves the selected item to the top of the list ensuring it is always visible.
         '''
-        toSel = self.dropdownlistbox.GetFirstSelected()
-        if toSel == -1:
+        toSel = self.dropdownlistbox.GetSelection()
+        if toSel == wx.NOT_FOUND:
             return
         self.dropdownlistbox.EnsureVisible(toSel)
 
     def _updateDataList(self, choices):
         #delete, if need, all the previous data
-        self.dropdownlistbox.DeleteAllItems()
+        self.dropdownlistbox.Clear()
 
         #and update the dict
         if choices:
@@ -320,13 +298,9 @@ class TextCtrlAutoComplete(wx.TextCtrl, listmix.ColumnSorterMixin):
                 self.itemDataMap[numVal] = data
         else:
             numVal = 0
-        self.SetColumnCount(numVal)
 
     def _setListSize(self):
-        if self._multiChoices:
-            choices = self._multiChoices
-        else:
-            choices = self._choices
+        choices = self._choices
 
         longest = 0
         for choice in choices:
@@ -336,6 +310,6 @@ class TextCtrlAutoComplete(wx.TextCtrl, listmix.ColumnSorterMixin):
         itemcount = min(len(choices), 7) + 2
         charheight = self.dropdownlistbox.GetCharHeight()
         charwidth = self.dropdownlistbox.GetCharWidth()
-        self.popupsize = wx.Size(charwidth * longest, charheight * itemcount)
-        self.dropdownlistbox.SetSize(self.popupsize)
-        self.dropdown.SetClientSize(self.popupsize)
+        popupsize = wx.Size(charwidth * longest, charheight * itemcount)
+        self.dropdownlistbox.SetSize(popupsize)
+        self.dropdown.SetClientSize(popupsize)
