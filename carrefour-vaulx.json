@@ -14,11 +14,11 @@
 	},
 	{
 		"name": "73",
-		"products": ["Cahier", "Classement", "Ecriture", "Colle", "Scotch"]
+		"products": ["cahier", "classement", "ecriture", "colle", "scotch"]
 	},
 	{
 		"name": "71",
-		"products": ["Filtre piscine"]
+		"products": ["filtre piscine"]
 	},
 	{
 		"name": "informatique",
@@ -49,7 +49,7 @@
 	},
 	{
 		"name": "59",
-		"products": ["Jouets", "Jeux société"]
+		"products": ["jouets", "jeux société"]
 	},
 	{
 		"name": "bijouterie",
@@ -60,15 +60,15 @@
 	},
 	{
 		"name": "55",
-		"products": ["papier alu", "papier sulfurisé", "sac congélation", "Café", "Thé", "Couverts"]
+		"products": ["papier alu", "papier sulfurisé", "sac congélation", "café", "thé", "couverts"]
 	},
 	{
 		"name": "53",
-		"products": ["Autocuiseur", "Vaisselle"]
+		"products": ["autocuiseur", "vaisselle"]
 	},
 	{
 		"name": "51",
-		"products": ["Cadre", "Sous-verre", "Luminaire", "Rangement plastique"]
+		"products": ["cadre", "sous-verre", "luminaire", "rangement plastique"]
 	},
 	{
 		"name": "50",
@@ -76,7 +76,7 @@
 	},
 	{
 		"name": "49",
-		"products": ["Salle de bain", "Etendage", "Cintre", "Repassage", "Eau déminéralisée"]
+		"products": ["salle de bain", "etendage", "cintre", "repassage", "eau déminéralisée"]
 	},
 	{
 		"name": "48",
@@ -91,7 +91,7 @@
 	},
 	{
 		"name": "45",
-		"products": ["Torchon", "House de couette", "Drap housse", "Mercerie"]
+		"products": ["torchon", "house de couette", "drap housse", "mercerie"]
 	},
 	{
 		"name": "44",
@@ -99,7 +99,7 @@
 	},
 	{
 		"name": "43",
-		"products": ["Gel douche", "Dentifrice", "brosse à dent", "Savon"]
+		"products": ["gel douche", "dentifrice", "brosse à dent", "savon"]
 	},
 	{
 		"name": "42",
@@ -119,11 +119,11 @@
 	},
 	{
 		"name": "37",
-		"products": ["Maquillage", "Coton-tige", "Soin visage", "crème solaire"]
+		"products": ["maquillage", "coton-tige", "soin visage", "crème solaire"]
 	},
 	{
 		"name":"35",
-		"products": ["Sac poubelle", "Eponges", "Sopalin", "Essuie-tout", "PQ"]
+		"products": ["sac poubelle", "eponges", "sopalin", "essuie-tout", "pq"]
 	},
 	{
 		"name": "34",
@@ -131,7 +131,7 @@
 	},
 	{
 		"name": "33",
-		"products": ["Insecticide", "Eau de javel", "Désodorisant", "Nettoyant sol"]
+		"products": ["insecticide", "eau de javel", "désodorisant", "nettoyant sol"]
 	},
 	{
 		"name": "32",
@@ -139,7 +139,7 @@
 	},
 	{
 		"name": "31",
-		"products": ["Lessive", "Adoucissant", "Liquide vaisselle", "Sel lave-vaisselle", "tablette lave-vaisselle", "produit lave-vaisselle"]
+		"products": ["lessive", "adoucissant", "liquide vaisselle", "sel lave-vaisselle", "tablette lave-vaisselle", "produit lave-vaisselle"]
 	},
 	{
 		"name": "poissonerie",

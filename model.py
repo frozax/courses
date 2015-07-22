@@ -2,6 +2,7 @@
 
 import json
 import sys
+import unidecode
 
 SAVE_FILE = "save.json"
 
@@ -27,6 +28,9 @@ class Model(object):
         for aisle in self.aisles:
             self.sorted_products.extend(aisle.get("products", []))
 
+        # list of products without special caracters for auto_complete
+        self.sorted_products_without_special_chars = [self.remove_special_chars(a) for a in self.sorted_products]
+
         # selected items
         self.selected_items = []
 
@@ -35,6 +39,9 @@ class Model(object):
         self.comments = {}
 
         self.load(SAVE_FILE)
+
+    def remove_special_chars(self, text):
+        return unidecode.unidecode(text)
 
     def get_user_list(self):
         return [(a, self.comments.get(a, "")) for a in self.selected_items]
@@ -89,3 +96,36 @@ class Model(object):
 
     def DBG_add_product_in_first_aisle(self):
         self.shop["rayons"][0]["products"].append("to")
+
+    def compute_auto_complete_list(self, text):
+        MAX_LIST_SIZE = 20
+        t = self.remove_special_chars(text)
+        if len(t) == 0:
+            return []
+        else:
+
+            HTML_START = "<b>"
+            HTML_END = "</b>"
+            def htmlize(text, index, length):
+                return text
+                #return text[:index] + HTML_START + text[index:index + length] + HTML_END + text[index + length:]
+
+            # find all items starting with text
+            l1 = []
+            l2 = []
+            for a in self.sorted_products_without_special_chars:
+                found = a.find(t)
+                if found != -1:
+                    if found == 0:
+                        list_to_add_to = l1
+                    else:
+                        list_to_add_to = l2
+                    list_to_add_to.append(htmlize(a, found, len(t)))
+
+            l = l1[:MAX_LIST_SIZE]
+            cur_len = len(l)
+            if cur_len < MAX_LIST_SIZE:
+                l.extend(l2[:MAX_LIST_SIZE-cur_len])
+            print l
+
+            return l

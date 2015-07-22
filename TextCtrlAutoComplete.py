@@ -12,29 +12,16 @@ Modified by Francois Guibert (www.frozax.com)
 
 '''
 
-import locale, wx, sys
+import wx
 
-import  wx.lib.mixins.listctrl  as  listmix
-
-class myListCtrl(wx.ListBox):
-    def __init__(self, parent, ID=-1, pos=wx.DefaultPosition,
-                 size=wx.DefaultSize, style=0):
-        wx.ListBox.__init__(self, parent=parent, id=ID, pos=pos, size=size, style=style)
-
-class myListCtrl_(wx.SimpleHtmlListBox):
+class myListCtrl(wx.SimpleHtmlListBox):
     def __init__(self, parent, ID=-1, pos=wx.DefaultPosition,
                  size=wx.DefaultSize, style=0):
         wx.SimpleHtmlListBox.__init__(self, parent=parent, id=ID, pos=pos, size=size, style=style)
 
-class myListCtrl_(wx.ListCtrl, listmix.ListCtrlAutoWidthMixin):
-    def __init__(self, parent, ID=-1, pos=wx.DefaultPosition,
-                 size=wx.DefaultSize, style=0):
-        wx.ListCtrl.__init__(self, parent, ID, pos, size, style)
-        listmix.ListCtrlAutoWidthMixin.__init__(self)
-
 class TextCtrlAutoComplete(wx.TextCtrl):
 
-    def __init__(self, parent, colNames=None, choices=None,
+    def __init__(self, parent, choices=None,
                  dropDownClick=True,
                  hideOnNoMatch=True,
                  selectCallback=None, entryCallback=None, matchFunction=None,
@@ -54,8 +41,6 @@ class TextCtrlAutoComplete(wx.TextCtrl):
 
         #Some variables
         self._dropDownClick = dropDownClick
-        self._colNames = colNames
-        self._choices = choices
         self._lastinsertionpoint = 0
         self._hideOnNoMatch = hideOnNoMatch
         self._selectCallback = selectCallback
@@ -63,13 +48,6 @@ class TextCtrlAutoComplete(wx.TextCtrl):
         self._matchFunction = matchFunction
 
         self._screenheight = wx.SystemSettings.GetMetric(wx.SYS_SCREEN_Y)
-
-        #sort variable needed by listmix
-        self.itemDataMap = dict()
-
-        #Load and sort data
-        if not self._choices:
-            raise ValueError, "Pass me choices"
 
         #widgets
         self.dropdown = wx.PopupWindow(self)
@@ -101,7 +79,6 @@ class TextCtrlAutoComplete(wx.TextCtrl):
 
         #self.dropdown.Bind(wx.EVT_LISTBOX, self.onListItemSelected, self.dropdownlistbox)
         self.dropdownlistbox.Bind(wx.EVT_LEFT_DOWN, self.onListClick)
-        self.dropdownlistbox.Bind(wx.EVT_LEFT_DCLICK, self.onListDClick)
 
         self._ascending = True
 
@@ -112,15 +89,13 @@ class TextCtrlAutoComplete(wx.TextCtrl):
         if toSel == wx.NOT_FOUND:
             return
         self.dropdownlistbox.SetSelection(toSel)
-
-    def onListDClick(self, evt):
         self._setValueFromSelected()
 
     def onEnteredText(self, event):
         text = event.GetString()
 
         if self._entryCallback:
-            self._entryCallback()
+            self._entryCallback(text)
 
         if not text:
             # control is empty; hide dropdown if shown:
@@ -204,24 +179,15 @@ class TextCtrlAutoComplete(wx.TextCtrl):
     def SetChoices(self, choices):
         '''
         Sets the choices available in the popup wx.ListBox.
-        The items will be sorted case insensitively.
+        The items are already sorted
         '''
-        self._choices = choices
+        self._choices = choices if choices is not None else []
         flags = wx.LC_REPORT | wx.LC_SINGLE_SEL | wx.LC_SORT_ASCENDING | wx.LC_NO_HEADER
         self.dropdownlistbox.SetWindowStyleFlag(flags)
 
-        if not isinstance(choices, list):
-            self._choices = [x for x in choices]
-
-        #prevent errors on "old" systems
-        if sys.version.startswith("2.3"):
-            self._choices.sort(lambda x, y: cmp(x.lower(), y.lower()))
-        else:
-            self._choices.sort(key=lambda x: locale.strxfrm(x).lower())
-
-        self._updateDataList(self._choices)
-
-        self.dropdownlistbox.InsertItems(self._choices, pos=0)
+        self.dropdownlistbox.Clear()
+        if len(self._choices) > 0:
+            self.dropdownlistbox.InsertItems(self._choices, pos=0)
 
         self._setListSize()
 
@@ -286,18 +252,8 @@ class TextCtrlAutoComplete(wx.TextCtrl):
         toSel = self.dropdownlistbox.GetSelection()
         if toSel == wx.NOT_FOUND:
             return
-        self.dropdownlistbox.EnsureVisible(toSel)
-
-    def _updateDataList(self, choices):
-        #delete, if need, all the previous data
-        self.dropdownlistbox.Clear()
-
-        #and update the dict
-        if choices:
-            for numVal, data in enumerate(choices):
-                self.itemDataMap[numVal] = data
-        else:
-            numVal = 0
+        if hasattr(self.dropdownlistbox, "EnsureVisible"):
+            self.dropdownlistbox.EnsureVisible(toSel)
 
     def _setListSize(self):
         choices = self._choices

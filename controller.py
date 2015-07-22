@@ -34,3 +34,7 @@ class Controller(object):
     def exit(self):
         # app is exited
         self.model.save()
+
+    def enter_product_text_entered(self, text):
+        l = self.model.compute_auto_complete_list(text)
+        self.view.frame.enter_product.SetChoices(l)

@@ -154,7 +154,7 @@ class Frame(wx.Frame):
         self.shop_list = ShopList(self.panel)
 
         self.left_side.Add(self.shop_list, 1, wx.EXPAND)
-        self.enter_product = TextCtrlAutoComplete(self.panel, choices=["a", "b", "abc", "ade", "ber"])
+        self.enter_product = TextCtrlAutoComplete(self.panel)
         self.left_side.Add(self.enter_product, 0, wx.EXPAND)
 
         self.main_sizer.Add(self.left_side, 1, wx.EXPAND|wx.ALL, 4)
@@ -222,6 +222,7 @@ class View(wx.App):
 
         self.frame.new_list_cbk = controller.new_list
         self.frame.Bind(wx.EVT_CLOSE, self.exit)
+        self.frame.enter_product.SetEntryCallback(controller.enter_product_text_entered)
         self.exit_cbk = controller.exit
 
     def exit(self, event):
@@ -234,4 +235,4 @@ class View(wx.App):
         dlg.Destroy()
 
     def set_user_list_sort(self, sort_type):
-        self.frame.user_list_sort.Set
+        pass
