@@ -5,6 +5,8 @@ import sys
 import unidecode
 
 SAVE_FILE = "save.json"
+HTML_START = "<b><u>"
+HTML_END = "</u></b>"
 
 class Model(object):
     def __init__(self):
@@ -104,28 +106,28 @@ class Model(object):
             return []
         else:
 
-            HTML_START = "<b>"
-            HTML_END = "</b>"
             def htmlize(text, index, length):
-                return text
-                #return text[:index] + HTML_START + text[index:index + length] + HTML_END + text[index + length:]
+                return text[:index] + HTML_START + text[index:index + length] + HTML_END + text[index + length:]
 
             # find all items starting with text
             l1 = []
             l2 = []
-            for a in self.sorted_products_without_special_chars:
+            for i, a in enumerate(self.sorted_products_without_special_chars):
                 found = a.find(t)
                 if found != -1:
                     if found == 0:
                         list_to_add_to = l1
                     else:
                         list_to_add_to = l2
-                    list_to_add_to.append(htmlize(a, found, len(t)))
+                    list_to_add_to.append(htmlize(self.sorted_products[i], found, len(t)))
 
             l = l1[:MAX_LIST_SIZE]
             cur_len = len(l)
             if cur_len < MAX_LIST_SIZE:
                 l.extend(l2[:MAX_LIST_SIZE-cur_len])
-            print l
 
             return l
+
+    def get_real_item_name_from_list_item(self, item):
+        new_item = item.replace(HTML_START, "").replace(HTML_END, "")
+        return new_item

@@ -38,3 +38,7 @@ class Controller(object):
     def enter_product_text_entered(self, text):
         l = self.model.compute_auto_complete_list(text)
         self.view.frame.enter_product.SetChoices(l)
+
+    def enter_product_item_selected_from_list(self, item):
+        real_item_name = self.model.get_real_item_name_from_list_item(item)
+        # TODO ADD ITEM TO LIST

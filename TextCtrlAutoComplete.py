@@ -214,7 +214,9 @@ class TextCtrlAutoComplete(wx.TextCtrl):
         if sel != wx.NOT_FOUND:
             itemtext = self.dropdownlistbox.GetString(sel)
             if self._selectCallback:
-                self._selectCallback(itemtext)
+                ret = self._selectCallback(itemtext)
+                if ret is not None:
+                    itemtext = ret
 
             self.SetValue(itemtext)
             self.SetInsertionPointEnd()
@@ -239,11 +241,6 @@ class TextCtrlAutoComplete(wx.TextCtrl):
             else:
                 self.dropdown.SetPosition(wx.Point(x, y - height - size.GetHeight()))
         self.dropdown.Show(show)
-        # TODO : do something?
-        #if show:
-        #    self.dropdown.Bind(wx.EVT_LISTBOX, self.onListItemSelected, self.dropdownlistbox)
-        #else:
-        #    pass
 
     def _listItemVisible(self):
         '''

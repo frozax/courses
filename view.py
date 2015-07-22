@@ -223,6 +223,8 @@ class View(wx.App):
         self.frame.new_list_cbk = controller.new_list
         self.frame.Bind(wx.EVT_CLOSE, self.exit)
         self.frame.enter_product.SetEntryCallback(controller.enter_product_text_entered)
+        self.frame.enter_product.SetMatchFunction(lambda a, b: True)
+        self.frame.enter_product.SetSelectCallback(controller.enter_product_item_selected_from_list)
         self.exit_cbk = controller.exit
 
     def exit(self, event):
