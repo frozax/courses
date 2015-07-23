@@ -25,6 +25,7 @@ class TextCtrlAutoComplete(wx.TextCtrl):
                  dropDownClick=True,
                  hideOnNoMatch=True,
                  selectCallback=None, entryCallback=None, matchFunction=None,
+                 enterPressedCallback=None,
                  **therest):
         '''
         Constructor works just like wx.TextCtrl except you can pass in a
@@ -46,6 +47,7 @@ class TextCtrlAutoComplete(wx.TextCtrl):
         self._selectCallback = selectCallback
         self._entryCallback = entryCallback
         self._matchFunction = matchFunction
+        self._enterPressedCallback = enterPressedCallback
 
         self._screenheight = wx.SystemSettings.GetMetric(wx.SYS_SCREEN_Y)
 
@@ -156,6 +158,10 @@ class TextCtrlAutoComplete(wx.TextCtrl):
             if event.GetKeyCode() == wx.WXK_ESCAPE:
                 self._showDropDown(False)
                 skip = False
+        else:
+            if event.GetKeyCode() == wx.WXK_RETURN:
+                if self._enterPressedCallback:
+                    self._enterPressedCallback(self.GetValue())
         if skip:
             event.Skip()
 
@@ -200,6 +206,9 @@ class TextCtrlAutoComplete(wx.TextCtrl):
     def SetEntryCallback(self, cb=None):
         self._entryCallback = cb
 
+    def SetEnterPressedCallback(self, cb=None):
+        self._enterPressedCallback = cb
+
     def SetMatchFunction(self, mf=None):
         self._matchFunction = mf
 
@@ -236,10 +245,11 @@ class TextCtrlAutoComplete(wx.TextCtrl):
                 size.SetWidth(width)
                 self.dropdown.SetSize(size)
                 self.dropdownlistbox.SetSize(self.dropdown.GetClientSize())
-            if (y + size.GetHeight()) < self._screenheight:
-                self.dropdown.SetPosition(wx.Point(x, y))
-            else:
-                self.dropdown.SetPosition(wx.Point(x, y - height - size.GetHeight()))
+            #if (y + size.GetHeight()) < self._screenheight:
+            #    self.dropdown.SetPosition(wx.Point(x, y))
+            #else:
+            #    self.dropdown.SetPosition(wx.Point(x, y - height - size.GetHeight()))
+            self.dropdown.SetPosition(wx.Point(x, y - height - size.GetHeight()))
         self.dropdown.Show(show)
 
     def _listItemVisible(self):

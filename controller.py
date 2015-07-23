@@ -1,4 +1,8 @@
 #!/usr/bin/python2
+# encoding: utf-8
+
+import os
+import webbrowser
 
 class Controller(object):
     def __init__(self, model, view):
@@ -39,6 +43,32 @@ class Controller(object):
         l = self.model.compute_auto_complete_list(text)
         self.view.frame.enter_product.SetChoices(l)
 
+    def enter_product_enter_pressed(self, text):
+        self.add_item_to_user_list(text)
+        self.refresh_both_lists()
+
+    def add_item_to_user_list(self, item):
+        if not self.model.exists(item):
+            if self.view.msg_box_yesno(u"Ajouter %s à la liste?" % item):
+                self.model.add_item_to_shop_list_temporarily(item)
+            else:
+                return None
+        self.model.add_item(item)
+
     def enter_product_item_selected_from_list(self, item):
         real_item_name = self.model.get_real_item_name_from_list_item(item)
-        # TODO ADD ITEM TO LIST
+        self.add_item_to_user_list(real_item_name)
+        self.refresh_both_lists()
+        return real_item_name
+
+    def print_pressed(self):
+        # gen html
+        html = self.model.generate_html_user_list()
+        #with tempfile.TemporaryDirectory() as d:
+        d = "/tmp"
+        fname = os.path.join(d, "list.html")
+        f = open(fname, "w")
+        print type(html)
+        f.write(html.encode("utf-8"))
+        f.close()
+        webbrowser.open("file://%s" % fname)

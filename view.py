@@ -144,6 +144,7 @@ class Frame(wx.Frame):
         wx.Frame.__init__(self, None, title=title)
 
         self.new_list_cbk = None
+        self.print_cbk = None
 
         self.panel = wx.Panel(self)
         self.panel.SetBackgroundColour((255, 128, 128))
@@ -188,15 +189,19 @@ class Frame(wx.Frame):
                 self.new_list_cbk()
         self.Bind(wx.EVT_TOOL, yes_no, new_tool)
         print_bmp = wx.ArtProvider.GetBitmap(wx.ART_PRINT, wx.ART_TOOLBAR, tsize)
-        self.tool_bar.AddLabelTool(1, "print", print_bmp)
+        print_tool = self.tool_bar.AddLabelTool(1, "print", print_bmp)
+        self.Bind(wx.EVT_TOOL, lambda evt: self.print_cbk(), print_tool)
         self.tool_bar.Realize()
 
 
 class View(wx.App):
     def OnInit(self):
         self.frame = Frame("Liste de Courses Creator")
+        self.frame.Maximize()
         self.frame.Show(True)
-        self.frame.Centre()
+        #self.frame.ShowFullScreen(show=True)
+        #self.frame.Maximize(True)
+        #self.frame.Layout()
         return True
 
     def set_status(self, status):
@@ -221,20 +226,23 @@ class View(wx.App):
                                            controller.user_list_clicked)
 
         self.frame.new_list_cbk = controller.new_list
+        self.frame.print_cbk = controller.print_pressed
         self.frame.Bind(wx.EVT_CLOSE, self.exit)
         self.frame.enter_product.SetEntryCallback(controller.enter_product_text_entered)
         self.frame.enter_product.SetMatchFunction(lambda a, b: True)
         self.frame.enter_product.SetSelectCallback(controller.enter_product_item_selected_from_list)
+        self.frame.enter_product.SetEnterPressedCallback(controller.enter_product_enter_pressed)
         self.exit_cbk = controller.exit
 
     def exit(self, event):
         self.exit_cbk()
         self.frame.Destroy()
 
-    def msg_box(self, text):
-        dlg = wx.MessageDialog(self.frame, text, "Message Box", wx.OK | wx.ICON_INFORMATION)
-        dlg.ShowModal()
+    def msg_box_yesno(self, text):
+        dlg = wx.MessageDialog(self.frame, text, "Message Box", wx.YES_NO | wx.ICON_INFORMATION)
+        ret = dlg.ShowModal()
         dlg.Destroy()
+        return ret == wx.ID_YES
 
     def set_user_list_sort(self, sort_type):
         pass

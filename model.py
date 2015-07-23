@@ -1,4 +1,5 @@
 #!/usr/bin/python2
+# coding: utf-8
 
 import json
 import sys
@@ -69,6 +70,10 @@ class Model(object):
         else:
             self.add_item(item)
 
+    def add_item_to_shop_list_temporarily(self, item):
+        self.sorted_products.insert(0, item)
+        self.sorted_products_without_special_chars.insert(0, self.remove_special_chars(item))
+
     def add_item(self, item):
         self.selected_items.append(item)
         self.selected_items.sort(key=lambda product: self.sorted_products.index(product))
@@ -86,6 +91,11 @@ class Model(object):
                 loaded = json.load(f)
                 self.comments = loaded["comments"]
                 self.selected_items = loaded["selected_items"]
+                # check temp items
+                for item in self.selected_items:
+                    if not self.exists(item):
+                        self.add_item_to_shop_list_temporarily(item)
+
         except IOError:
             pass
         # comments
@@ -131,3 +141,29 @@ class Model(object):
     def get_real_item_name_from_list_item(self, item):
         new_item = item.replace(HTML_START, "").replace(HTML_END, "")
         return new_item
+
+    def exists(self, item):
+        return item in self.sorted_products
+
+    def generate_html_user_list(self):
+        def get_aisle_from_product(item):
+            for aisle in self.aisles:
+                if item in aisle.get("products", []):
+                    return aisle["name"]
+            return None
+
+        def enc(text):
+            return text.encode('ascii', 'xmlcharrefreplace')
+
+        html = u"<html><p style=\"font-family: Arial\">"
+        prev_aisle = None
+        for item in self.selected_items:
+            aisle = get_aisle_from_product(item)
+            if aisle != prev_aisle:
+                html += u"<h2 style=\"font-size: small; font-family: arial; margin-bottom: 0px; margin-top: 3px;\">%s</h2>" % enc(aisle)
+                prev_aisle = aisle
+            html += u"<p style=\"font-size: small; font-family: arial; margin: 0px; margin-left: 10px;\">%s %s</p>" % (enc(item), enc(self.comments.get(item, u"")))
+
+        html += u"</p></html>"
+
+        return html

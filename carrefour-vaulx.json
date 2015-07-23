@@ -142,7 +142,7 @@
 		"products": ["lessive", "adoucissant", "liquide vaisselle", "sel lave-vaisselle", "tablette lave-vaisselle", "produit lave-vaisselle"]
 	},
 	{
-		"name": "poissonerie",
+		"name": "poissonnerie",
 		"products": ["sushis", "rillette saumon", "saumon fumé", "lardon saumon", "surimi", "oeufs de lompe", "tarama"]
 	},
 	{
@@ -316,7 +316,7 @@
  	"maison",
  	"51",
  	"49",
- 	"poissonerie",
+ 	"poissonnerie",
  	"fruits et légumes",
  	"fromagerie au détail",
  	"47",
