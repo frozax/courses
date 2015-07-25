@@ -67,8 +67,10 @@ class Model(object):
     def shop_list_item_toggle(self, item):
         if item in self.selected_items:
             self.selected_items.remove(item)
+            return False
         else:
             self.add_item(item)
+            return True
 
     def add_item_to_shop_list_temporarily(self, item):
         self.sorted_products.insert(0, item)

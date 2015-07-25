@@ -1,19 +1,11 @@
-US: Je veux voir tous les produits disponibles dans le magasin, triés par rayon ou alphabétiquement
+US: optim
 
-US: Je veux ajouter un produit en cliquant sur la liste de produits (icone main quand on se pose dessus)
-
-US: Je veux une image à côté de chaque produit (par defaut en cherchant sur google image)
-
-US: Je veux générer un pdf de ma liste (wx.Print)
+US: icone main quand on se pose dessus un item clickable
 
 US: Je veux pouvoir dicter ma liste par mon micro
 
 US: afficher en gras le moceau dans la liste quand on a la souris sur autre chose
-US: Afficher en gras/couleur les éléments dans la dropdown list
+US: Afficher en goras/couleur les éléments dans la dropdown list
 
-demos intéressante:s
-- ScrolledPanel
-- Resize
-- Layoutf
-- SearchCtrl
-- Sizers
+US: bug si on mets des accents dans les cases de droites
+US: liste pas réordonnée apres chargements (si on a changé l'ordre ou ajouté des trucs dans les rayons)

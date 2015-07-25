@@ -212,6 +212,8 @@ class TextCtrlAutoComplete(wx.TextCtrl):
     def SetMatchFunction(self, mf=None):
         self._matchFunction = mf
 
+    def select_all(self):
+        self.SetSelection(-1, -1)
 
     #-- Internal methods
     def _setValueFromSelected(self):

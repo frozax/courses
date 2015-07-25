@@ -91,7 +91,7 @@
 	},
 	{
 		"name": "45",
-		"products": ["torchon", "house de couette", "drap housse", "mercerie"]
+		"products": ["torchon", "house de couette", "drap housse", "mercerie", "oreiller"]
 	},
 	{
 		"name": "44",
@@ -183,7 +183,7 @@
 	},
 	{
 		"name": "17",
-		"products": ["viennoiserie", "croissants", "pâtisserie", "donuts", "gâteau", "pitch", "pain de mie", "pain burger"]
+		"products": ["viennoiserie", "croissants", "pâtisserie", "donuts", "gâteau", "pitch abricot", "pitch fraise", "pitch chocolat", "pitch autre", "pain de mie", "pain burger"]
 	},
 	{
 		"name": "boulangerie",
@@ -191,7 +191,7 @@
 	},
 	{
 		"name": "16",
-		"products": ["thé", "confiture", "café", "nesquik", "banania"]
+		"products": ["thé", "confiture", "café", "nesquik", "banania", "lait concentré"]
 	},
 	{
 		"name": "15",
@@ -203,7 +203,7 @@
 	},
 	{
 		"name": "13",
-		"products": ["riz", "sauce tomate", "pâtes", "purée"]
+		"products": ["riz", "sauce tomate", "pâtes", "spaghettis", "coquillettes", "purée"]
 	},
 	{
 		"name": "12",
@@ -219,7 +219,7 @@
 	},
 	{
 		"name": "9",
-		"products": ["huile", "sel", "ketchup", "mayo", "sauce barbecue", "épices"]
+		"products": ["huile", "vinaigre alcool", "vinaigre balsamique", "sel", "ketchup", "mayo", "sauce barbecue", "sauces fondue", "épices"]
 	},
 	{
 		"name": "8",
@@ -227,7 +227,7 @@
 	},
 	{
 		"name": "7",
-		"products": ["jus d'orange", "sucre poudre", "sucre morceaux", "farine", "amandes poudes", "préparation dessert", "raisins secs", "vanille", "bougie anniv"]
+		"products": ["jus d'orange", "jus de fruits", "sucre poudre", "sucre morceaux", "farine", "amandes poudes", "préparation dessert", "raisins secs", "vanille", "bougie anniv"]
 	},
 	{
 		"name": "6",

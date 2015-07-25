@@ -21,8 +21,9 @@ class Controller(object):
         self.refresh_both_lists()
 
     def shop_list_clicked(self, item):
-        self.model.shop_list_item_toggle(item)
-        self.refresh_both_lists()
+        selected = self.model.shop_list_item_toggle(item)
+        self.view.refresh_user_list(self.model.get_user_list())
+        return selected
 
     def user_list_comment_entered(self, item, comment):
         self.model.update_product_comment(item, comment)
@@ -46,6 +47,7 @@ class Controller(object):
     def enter_product_enter_pressed(self, text):
         self.add_item_to_user_list(text)
         self.refresh_both_lists()
+        self.view.frame.enter_product.select_all()
 
     def add_item_to_user_list(self, item):
         if not self.model.exists(item):
@@ -72,3 +74,6 @@ class Controller(object):
         f.write(html.encode("utf-8"))
         f.close()
         webbrowser.open("file://%s" % fname)
+
+    def save(self):
+        self.model.save()

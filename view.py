@@ -4,51 +4,15 @@ import wx
 import wx.lib.scrolledpanel as scrolled
 from TextCtrlAutoComplete import TextCtrlAutoComplete
 
-class SampleWindow(wx.PyWindow):
-    """
-    A simple window that is used as sizer items in the tests below to
-    show how the various sizers work.
-    """
-    def __init__(self, parent, text, pos=wx.DefaultPosition, size=wx.DefaultSize):
-        wx.PyWindow.__init__(self, parent, -1,
-                             #style=wx.RAISED_BORDER
-                             #style=wx.SUNKEN_BORDER
-                             style=wx.SIMPLE_BORDER
-                             )
-        self.text = text
-        if size != wx.DefaultSize:
-            self.bestsize = size
-        else:
-            self.bestsize = (80,25)
-        self.SetSize(self.GetBestSize())
-
-        self.Bind(wx.EVT_PAINT, self.OnPaint)
-        self.Bind(wx.EVT_SIZE, self.OnSize)
-
-    def OnPaint(self, evt):
-        sz = self.GetSize()
-        dc = wx.PaintDC(self)
-        w,h = dc.GetTextExtent(self.text)
-        dc.Clear()
-        dc.DrawText(self.text, (sz.width-w)/2, (sz.height-h)/2)
-
-    def OnSize(self, evt):
-        self.Refresh()
-
-    def DoGetBestSize(self):
-        return self.bestsize
-
 class ShopList(wx.Panel):
+    SELECTED_COLOR = (0, 180, 0)
+    NOTSELECTED_COLOR = (40, 40, 40)
     def __init__(self, parent):
         wx.Panel.__init__(self, parent)
         self.parent = parent
         # horiz sizer full of vert sizers
         self.sizer = wx.BoxSizer(wx.HORIZONTAL)
         self.SetSizer(self.sizer)
-        #self.SetBackgroundColour((127, 127, 255))
-
-        #btn = wx.Button(self, label="toto")
-        #self.sizer.Add(btn, 1, wx.EXPAND)
 
         self.click_callback = None
         self.header_font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.BOLD)
@@ -59,7 +23,14 @@ class ShopList(wx.Panel):
     def click_product(self, event):
         eo = event.GetEventObject()
         text = eo.GetLabel()
-        self.click_callback(text)
+        selected = self.click_callback(text)
+        eo.SetForegroundColour(ShopList.SELECTED_COLOR if selected else ShopList.NOTSELECTED_COLOR)
+
+    def enter_window(self, event):
+        eo = event.GetEventObject()
+        print eo, type(eo)
+        text = eo.GetLabel()
+        print text
 
     def set_data(self, data):
         self.sizer.Clear(True)
@@ -79,8 +50,12 @@ class ShopList(wx.Panel):
                 if "product" in type_:
                     ctrl.Bind(wx.EVT_LEFT_DOWN, self.click_product)
                     if "selected" in type_:
-                        ctrl.SetForegroundColour((0, 180, 0))
+                        ctrl.SetForegroundColour(ShopList.SELECTED_COLOR)
+                    else:
+                        ctrl.SetForegroundColour(ShopList.NOTSELECTED_COLOR)
+                    #ctrl.SetCursor(wx.StockCursor(wx.CURSOR_HAND))
                 elif type_ == "aisle-name":
+                    #ctrl.SetCursor(wx.StockCursor(wx.CURSOR_ARROW))
                     ctrl.SetFont(self.header_font)
 
             remaining_y -= 1
@@ -175,7 +150,7 @@ class Frame(wx.Frame):
         self.panel.SetSizer(self.main_sizer)
         self.main_sizer.Fit(self.panel)
 
-        self.CreateStatusBar()
+        #self.CreateStatusBar()
         self.tool_bar = self.CreateToolBar()
         tsize = (24, 24)
         self.tool_bar.SetToolBitmapSize(tsize)
@@ -188,10 +163,17 @@ class Frame(wx.Frame):
             if result:
                 self.new_list_cbk()
         self.Bind(wx.EVT_TOOL, yes_no, new_tool)
+
         print_bmp = wx.ArtProvider.GetBitmap(wx.ART_PRINT, wx.ART_TOOLBAR, tsize)
         print_tool = self.tool_bar.AddLabelTool(1, "print", print_bmp)
         self.Bind(wx.EVT_TOOL, lambda evt: self.print_cbk(), print_tool)
+
+        save_bmp = wx.ArtProvider.GetBitmap(wx.ART_FLOPPY, wx.ART_TOOLBAR, tsize)
+        save_tool = self.tool_bar.AddLabelTool(2, "save", save_bmp)
+        self.Bind(wx.EVT_TOOL, lambda evt: self.save_cbk(), save_tool)
         self.tool_bar.Realize()
+
+        self.enter_product.SetFocus()
 
 
 class View(wx.App):
@@ -227,6 +209,7 @@ class View(wx.App):
 
         self.frame.new_list_cbk = controller.new_list
         self.frame.print_cbk = controller.print_pressed
+        self.frame.save_cbk = controller.save
         self.frame.Bind(wx.EVT_CLOSE, self.exit)
         self.frame.enter_product.SetEntryCallback(controller.enter_product_text_entered)
         self.frame.enter_product.SetMatchFunction(lambda a, b: True)
