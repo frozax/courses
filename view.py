@@ -90,25 +90,47 @@ class UserList(scrolled.ScrolledPanel):
         self.comment_entered_cbk = comment_entered
         self.item_clicked_cbk = item_clicked
 
-    def _add_line(self, val, comment):
-        horiz_sizer = wx.BoxSizer(wx.HORIZONTAL)
-        text = wx.StaticText(self, label=val)
-        text.Bind(wx.EVT_LEFT_DOWN, lambda evt: self.item_clicked_cbk(text.GetLabel()))
-        horiz_sizer.Add(text, proportion=1)
-        if comment is not None:
+    def _set_line(self, i, val, comment):
+        from time import time
+        t1 = time()
+
+        children = self.sizer.GetChildren()
+        nb_children = len(children)
+
+        if i < nb_children:
+            # TODO Modify existing object
+            sizer_item = children[i]
+            horiz_sizer = sizer_item.GetSizer()
+            text = horiz_sizer.GetItem(0).GetWindow()
+            comment_ctrl = horiz_sizer.GetItem(1).GetWindow()
+            text.SetLabel(val)
+            comment_ctrl.SetValue(comment)
+            #print text, comment_ctrl
+            #horiz_sizer.Show(True)
+            #horiz_sizer.Layout()
+            sizer_item.Show(True)
+        elif i == len(children):
+            horiz_sizer = wx.BoxSizer(wx.HORIZONTAL)
+            text = wx.StaticText(self, label=val)
+            text.Bind(wx.EVT_LEFT_DOWN, lambda evt: self.item_clicked_cbk(text.GetLabel()))
+            horiz_sizer.Add(text, proportion=1)
             comment_ctrl = wx.TextCtrl(self, value=comment, size=(40, -1))
             comment_ctrl.Bind(wx.EVT_TEXT,
                 lambda evt: self.comment_entered_cbk(val, comment_ctrl.GetValue()))
             horiz_sizer.Add(comment_ctrl, proportion=0)
-        self.sizer.Add(horiz_sizer, flag=wx.EXPAND)
+            self.sizer.Add(horiz_sizer, flag=wx.EXPAND)
+        else:
+            raise IndexError
+
+        t4 = time()
+        print (t4 - t1)
 
     def set_data(self, data):
-        self.sizer.Clear(True)
-        if len(data) == 0:
-            self._add_line("", None)
-        else:
-            for val, comment in data:
-                self._add_line(val, comment)
+        self.sizer.ShowItems(False)
+        from time import time
+        # TODO Check case empty list
+        for i, val_comment in enumerate(data):
+            self._set_line(i, val_comment[0], val_comment[1])
 
         self.parent.Layout()
         self.Layout()

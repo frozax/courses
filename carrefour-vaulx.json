@@ -41,7 +41,8 @@
 		"products": ["piles", "ampoule", "tournevis"]
 	},
 	{
-		"name": "saisonnier"
+		"name": "saisonnier",
+		"products": ["cahier de vacances"]
 	},
 	{
 		"name": "60",

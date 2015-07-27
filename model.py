@@ -78,7 +78,10 @@ class Model(object):
 
     def add_item(self, item):
         self.selected_items.append(item)
-        self.selected_items.sort(key=lambda product: self.sorted_products.index(product))
+        self.sort_selected_items()
+
+    def sort_selected_items(self):
+        self.selected_items.sort(key=self.sorted_products.index)
 
     def user_list_remove_item(self, item):
         if item in self.selected_items:
@@ -93,10 +96,11 @@ class Model(object):
                 loaded = json.load(f)
                 self.comments = loaded["comments"]
                 self.selected_items = loaded["selected_items"]
-                # check temp items
-                for item in self.selected_items:
+                # check temp items in reverse to avoid changing order
+                for item in reversed(self.selected_items):
                     if not self.exists(item):
                         self.add_item_to_shop_list_temporarily(item)
+                self.sort_selected_items()
 
         except IOError:
             pass
@@ -106,7 +110,7 @@ class Model(object):
     def save(self, filename=SAVE_FILE):
         with open(filename, "w") as f:
             to_save = {"comments": self.comments, "selected_items": self.selected_items}
-            json.dump(to_save, f)
+            json.dump(to_save, f, indent=4)
 
     def DBG_add_product_in_first_aisle(self):
         self.shop["rayons"][0]["products"].append("to")
