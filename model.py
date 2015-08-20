@@ -41,13 +41,15 @@ class Model(object):
         # comments[item] = "comment"
         self.comments = {}
 
+
         self.load(SAVE_FILE)
 
     def remove_special_chars(self, text):
         return unidecode.unidecode(text)
 
     def get_user_list(self):
-        return [(a, self.comments.get(a, "")) for a in self.selected_items]
+        l = [(a, self.comments.get(a, ""), self.get_aisle_from_product(a) is None) for a in self.selected_items]
+        return l
 
     def clear_user_list(self):
         self.selected_items = []
@@ -62,6 +64,21 @@ class Model(object):
                 for p in aisle["products"]:
                     ret.append((p, "product" if p not in self.selected_items else "selected-product"))
                 ret.append(("", "spacer"))
+        return ret
+
+    def get_shop_list_details(self, items_in_autocomplete=None):
+        """
+        returns dictionnary with items as key and list of info as value
+        """
+        ret = {}
+        if items_in_autocomplete is None:
+            items_in_autocomplete = []
+        for product in self.sorted_products:
+            ret[product] = []
+            if product in self.selected_items:
+                ret[product].append("selected")
+            if product in items_in_autocomplete:
+                ret[product].append("inautocompletion")
         return ret
 
     def shop_list_item_toggle(self, item):
@@ -104,8 +121,6 @@ class Model(object):
 
         except IOError:
             pass
-        # comments
-        # current list
 
     def save(self, filename=SAVE_FILE):
         with open(filename, "w") as f:
@@ -118,9 +133,9 @@ class Model(object):
     def compute_auto_complete_list(self, text):
         MAX_LIST_SIZE = 20
         t = self.remove_special_chars(text)
-        if len(t) == 0:
-            return []
-        else:
+        items_in_autocomplete = []
+        l = []
+        if len(t) != 0:
 
             def htmlize(text, index, length):
                 return text[:index] + HTML_START + text[index:index + length] + HTML_END + text[index + length:]
@@ -131,6 +146,7 @@ class Model(object):
             for i, a in enumerate(self.sorted_products_without_special_chars):
                 found = a.find(t)
                 if found != -1:
+                    items_in_autocomplete.append(self.sorted_products[i])
                     if found == 0:
                         list_to_add_to = l1
                     else:
@@ -142,7 +158,7 @@ class Model(object):
             if cur_len < MAX_LIST_SIZE:
                 l.extend(l2[:MAX_LIST_SIZE-cur_len])
 
-            return l
+        return l, items_in_autocomplete
 
     def get_real_item_name_from_list_item(self, item):
         new_item = item.replace(HTML_START, "").replace(HTML_END, "")
@@ -151,20 +167,20 @@ class Model(object):
     def exists(self, item):
         return item in self.sorted_products
 
-    def generate_html_user_list(self):
-        def get_aisle_from_product(item):
-            for aisle in self.aisles:
-                if item in aisle.get("products", []):
-                    return aisle["name"]
-            return None
+    def get_aisle_from_product(self, item):
+        for aisle in self.aisles:
+            if item in aisle.get("products", []):
+                return aisle["name"]
+        return None
 
+    def generate_html_user_list(self):
         def enc(text):
             return text.encode('ascii', 'xmlcharrefreplace')
 
         html = u"<html><p style=\"font-family: Arial\">"
         prev_aisle = None
         for item in self.selected_items:
-            aisle = get_aisle_from_product(item)
+            aisle = self.get_aisle_from_product(item)
             if aisle != prev_aisle:
                 html += u"<h2 style=\"font-size: small; font-family: arial; margin-bottom: 0px; margin-top: 3px;\">%s</h2>" % enc(aisle)
                 prev_aisle = aisle

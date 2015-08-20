@@ -7,15 +7,18 @@ from TextCtrlAutoComplete import TextCtrlAutoComplete
 class ShopList(wx.Panel):
     SELECTED_COLOR = (0, 180, 0)
     NOTSELECTED_COLOR = (40, 40, 40)
+    OVERED_COLOR = (40, 40, 255)
     def __init__(self, parent):
         wx.Panel.__init__(self, parent)
         self.parent = parent
         # horiz sizer full of vert sizers
         self.sizer = wx.BoxSizer(wx.HORIZONTAL)
         self.SetSizer(self.sizer)
+        self.item_to_ctrl = {}
 
         self.click_callback = None
         self.header_font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.BOLD)
+        self.normal_font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
 
     def set_callback(self, cbk):
         self.click_callback = cbk
@@ -26,15 +29,9 @@ class ShopList(wx.Panel):
         selected = self.click_callback(text)
         eo.SetForegroundColour(ShopList.SELECTED_COLOR if selected else ShopList.NOTSELECTED_COLOR)
 
-    def enter_window(self, event):
-        eo = event.GetEventObject()
-        print eo, type(eo)
-        text = eo.GetLabel()
-        print text
-
     def set_data(self, data):
         self.sizer.Clear(True)
-        max_y_size = self.GetSize()[1]
+        self.item_to_ctrl = {}
         #remaining_size_x, init_remaining_size_y = self.parent.GetSize()
         nb_items_vertically = 50
         remaining_y = nb_items_vertically
@@ -49,10 +46,7 @@ class ShopList(wx.Panel):
                 ctrl = wx.StaticText(self, label=product, style=style, size=(130, -1))
                 if "product" in type_:
                     ctrl.Bind(wx.EVT_LEFT_DOWN, self.click_product)
-                    if "selected" in type_:
-                        ctrl.SetForegroundColour(ShopList.SELECTED_COLOR)
-                    else:
-                        ctrl.SetForegroundColour(ShopList.NOTSELECTED_COLOR)
+                    self.item_to_ctrl[product] = ctrl
                     #ctrl.SetCursor(wx.StockCursor(wx.CURSOR_HAND))
                 elif type_ == "aisle-name":
                     #ctrl.SetCursor(wx.StockCursor(wx.CURSOR_ARROW))
@@ -73,6 +67,24 @@ class ShopList(wx.Panel):
 
         self.parent.Layout()
 
+    def update_colors(self, colors_dict):
+        """
+        colors_dict contains type of item sorted by name
+        e.g.: inuserlist, overed, inautocompletion
+        """
+        for k, v in colors_dict.iteritems():
+            bold = "inautocompletion" in v
+            if "overed" in v:
+                color = ShopList.OVERED_COLOR
+            elif "selected" in v:
+                color = ShopList.SELECTED_COLOR
+            else:
+                color = ShopList.NOTSELECTED_COLOR
+            item = self.item_to_ctrl.get(k)
+            if item:
+                item.SetForegroundColour(color)
+                item.SetFont(self.header_font if bold else self.normal_font)
+
 
 class UserList(scrolled.ScrolledPanel):
     def __init__(self, parent):
@@ -90,24 +102,17 @@ class UserList(scrolled.ScrolledPanel):
         self.comment_entered_cbk = comment_entered
         self.item_clicked_cbk = item_clicked
 
-    def _set_line(self, i, val, comment):
-        from time import time
-        t1 = time()
-
+    def _set_line(self, i, val, comment, colored):
         children = self.sizer.GetChildren()
         nb_children = len(children)
 
         if i < nb_children:
-            # TODO Modify existing object
             sizer_item = children[i]
             horiz_sizer = sizer_item.GetSizer()
             text = horiz_sizer.GetItem(0).GetWindow()
             comment_ctrl = horiz_sizer.GetItem(1).GetWindow()
             text.SetLabel(val)
-            comment_ctrl.SetValue(comment)
-            #print text, comment_ctrl
-            #horiz_sizer.Show(True)
-            #horiz_sizer.Layout()
+            comment_ctrl.ChangeValue(comment)
             sizer_item.Show(True)
         elif i == len(children):
             horiz_sizer = wx.BoxSizer(wx.HORIZONTAL)
@@ -121,16 +126,13 @@ class UserList(scrolled.ScrolledPanel):
             self.sizer.Add(horiz_sizer, flag=wx.EXPAND)
         else:
             raise IndexError
-
-        t4 = time()
-        print (t4 - t1)
+        text.SetForegroundColour((255, 40, 40) if colored else (40, 40, 40))
 
     def set_data(self, data):
         self.sizer.ShowItems(False)
-        from time import time
         # TODO Check case empty list
         for i, val_comment in enumerate(data):
-            self._set_line(i, val_comment[0], val_comment[1])
+            self._set_line(i, val_comment[0], val_comment[1], val_comment[2])
 
         self.parent.Layout()
         self.Layout()
@@ -214,8 +216,11 @@ class View(wx.App):
     def refresh_user_list(self, l):
         self.frame.user_list.set_data(l)
 
-    def refresh_shop_list(self, l):
+    def setup_shop_list(self, l):
         self.frame.shop_list.set_data(l)
+
+    def update_shop_list_colors(self, lcolors):
+        self.frame.shop_list.update_colors(lcolors)
 
     def setup_controller(self, controller):
         # set up callbacks for user interactions

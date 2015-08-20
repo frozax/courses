@@ -9,16 +9,15 @@ class Controller(object):
         self.model = model
         self.view = view
         self.view.setup_controller(self)
+        self.view.setup_shop_list(self.model.get_shop_list())
         self.refresh_both_lists()
+
+    def update_shop_list_colors(self, autocomplete_items=None):
+        self.view.update_shop_list_colors(self.model.get_shop_list_details(autocomplete_items))
 
     def refresh_both_lists(self):
         self.view.refresh_user_list(self.model.get_user_list())
-        self.view.refresh_shop_list(self.model.get_shop_list())
-
-    def print_pressed(self):
-        self.view.set_status("print pressed")
-        self.model.DBG_add_product_in_first_aisle()
-        self.refresh_both_lists()
+        self.update_shop_list_colors()
 
     def shop_list_clicked(self, item):
         selected = self.model.shop_list_item_toggle(item)
@@ -41,8 +40,9 @@ class Controller(object):
         self.model.save()
 
     def enter_product_text_entered(self, text):
-        l = self.model.compute_auto_complete_list(text)
-        self.view.frame.enter_product.SetChoices(l)
+        html_list, item_list = self.model.compute_auto_complete_list(text)
+        self.view.frame.enter_product.SetChoices(html_list)
+        self.update_shop_list_colors(item_list)
 
     def enter_product_enter_pressed(self, text):
         self.add_item_to_user_list(text)

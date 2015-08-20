@@ -144,11 +144,11 @@
 	},
 	{
 		"name": "poissonnerie",
-		"products": ["sushis", "rillette saumon", "saumon fumé", "lardon saumon", "surimi", "oeufs de lompe", "tarama"]
+		"products": ["sushis", "rillette saumon", "saumon fumé", "lardon saumon", "surimi", "oeufs de lompe", "tarama", "saumon"]
 	},
 	{
 		"name": "fruits et légumes",
-		"products": ["melon", "oignon", "patate", "tomate", "tomate cerise", "concombre", "citron", "salade", "courgette", "poireau", "carotte", "poivron", "betterave", "champignon", "ail", "banane", "kiwi", "orange", "clémentine", "ananas", "citron", "brugnon", "échalotte", "pamplemousse", "navet", "raisin", "pomme", "pasteque", "fraise", "framboise", "avocat", "abricot", "cerise", "noix", "gingembre", "citron vert", "pruneau"]
+		"products": ["melon", "oignon", "patate", "tomates", "tomates cerise", "concombre", "citron", "salade", "courgette", "poireau", "carotte", "poivron", "betterave", "champignon", "ail", "banane", "kiwi", "orange", "clémentine", "ananas", "citron", "brugnon", "échalotte", "pamplemousse", "navet", "raisin", "pomme", "pasteque", "fraise", "framboise", "avocat", "abricot", "cerise", "noix", "gingembre", "citron vert", "pruneau"]
 	},
 	{
 		"name": "charcuterie fraîche",
@@ -156,7 +156,7 @@
 	},
 	{
 		"name": "30",
-		"products": ["fjord", "danette choco", "danette autre", "danette vanille", "danette caramel", "danette vanille/choco", "liegois fruits", "riz au lait", "compoté", "semoule (yaourt)", "petit filou", "dessert fr"]
+		"products": ["fjord", "danette choco", "danette autre", "danette vanille", "danette caramel", "danette vanille/choco", "liegois fruits", "riz au lait", "compoté", "semoule (yaourt)", "petit filou", "dessert fr", "yaourt fruits"]
 	},
 	{
 		"name": "28",
@@ -172,7 +172,7 @@
 	},
 	{
 		"name": "22",
-		"products": ["jambon", "cervelas", "knaki", "bacon", "saucisson", "pâte brisée", "pâte sablée", "pâte feuilletée", "chorizo"]
+		"products": ["jambon", "lardons", "cervelas", "knaki", "bacon", "saucisson", "pâte brisée", "pâte sablée", "pâte feuilletée", "chorizo"]
 	},
 	{
 		"name": "20",
