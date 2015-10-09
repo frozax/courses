@@ -6,7 +6,7 @@
 	},
 	{
 		"name": "boucherie",
-		"products": ["poulet", "steak haché", "steak", "saucisses"]
+		"products": ["poulet", "escalope poulet", "escalope dinde", "steak haché", "steak", "saucisses"]
 	},
 	{
 		"name": "75",
@@ -168,7 +168,7 @@
 	},
 	{
 		"name": "surgelés",
-		"products": ["glace", "haricots verts", "crêpes"]
+		"products": ["glace", "haricots verts", "crêpes", "poissons panés"]
 	},
 	{
 		"name": "22",
@@ -220,7 +220,7 @@
 	},
 	{
 		"name": "9",
-		"products": ["huile", "vinaigre alcool", "vinaigre balsamique", "sel", "ketchup", "mayo", "sauce barbecue", "sauces fondue", "épices"]
+		"products": ["huile", "vinaigre alcool", "vinaigre balsamique", "sel", "ketchup", "mayonnaise", "sauce barbecue", "sauces fondue", "épices"]
 	},
 	{
 		"name": "8",
@@ -228,7 +228,7 @@
 	},
 	{
 		"name": "7",
-		"products": ["jus d'orange", "jus de fruits", "sucre poudre", "sucre morceaux", "farine", "amandes poudes", "préparation dessert", "raisins secs", "vanille", "bougie anniv"]
+		"products": ["jus d'orange", "jus de fruits", "sucre poudre", "sucre morceaux", "farine", "amandes poudes", "préparation dessert", "raisins secs", "vanille", "gousse vanille", "bougie anniv"]
 	},
 	{
 		"name": "6",
@@ -317,9 +317,6 @@
  	"maison",
  	"51",
  	"49",
- 	"poissonnerie",
- 	"fruits et légumes",
- 	"fromagerie au détail",
  	"47",
  	"45",
  	"43",
@@ -329,6 +326,9 @@
  	"35",
  	"33",
  	"31",
+ 	"poissonnerie",
+ 	"fruits et légumes",
+ 	"fromagerie au détail",
  	"29",
  	"27",
  	"25",
