@@ -121,7 +121,7 @@ class UserList(scrolled.ScrolledPanel):
             horiz_sizer.Add(text, proportion=1)
             comment_ctrl = wx.TextCtrl(self, value=comment, size=(40, -1))
             comment_ctrl.Bind(wx.EVT_TEXT,
-                lambda evt: self.comment_entered_cbk(val, comment_ctrl.GetValue()))
+                lambda evt: self.comment_entered_cbk(text.GetLabel(), comment_ctrl.GetValue()))
             horiz_sizer.Add(comment_ctrl, proportion=0)
             self.sizer.Add(horiz_sizer, flag=wx.EXPAND)
         else:
