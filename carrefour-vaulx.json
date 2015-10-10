@@ -6,7 +6,7 @@
 	},
 	{
 		"name": "boucherie",
-		"products": ["poulet", "escalope poulet", "escalope dinde", "steak haché", "steak", "saucisses"]
+		"products": ["poulet", "escalope poulet", "escalope dinde", "steak haché", "steak", "saucisses", "roti porc", "roti boeuf"]
 	},
 	{
 		"name": "75",
@@ -57,7 +57,8 @@
 		"products": ["bijou", "bracelet", "bague", "collier"]
 	},
 	{
-		"name": "57"
+		"name": "57",
+		"products": ["assiettes cartons", "verres plastique"]
 	},
 	{
 		"name": "55",
@@ -208,7 +209,7 @@
 	},
 	{
 		"name": "12",
-		"products": ["cookies", "goûters", "napolitain", "rond choco"]
+		"products": ["cookies", "goûters", "napolitain", "rond choco", "BN fraise", "BN chocolat"]
 	},
 	{
 		"name": "11",
@@ -220,7 +221,7 @@
 	},
 	{
 		"name": "9",
-		"products": ["huile", "vinaigre alcool", "vinaigre balsamique", "sel", "ketchup", "mayonnaise", "sauce barbecue", "sauces fondue", "épices"]
+		"products": ["huile", "vinaigre alcool", "vinaigre balsamique", "sel", "ketchup", "mayonnaise", "sauce barbecue", "sauces fondue", "épices", "cornichons", "moutarde"]
 	},
 	{
 		"name": "8",
@@ -228,7 +229,7 @@
 	},
 	{
 		"name": "7",
-		"products": ["jus d'orange", "jus de fruits", "sucre poudre", "sucre morceaux", "farine", "amandes poudes", "préparation dessert", "raisins secs", "vanille", "gousse vanille", "bougie anniv"]
+		"products": ["jus d'orange", "jus de fruits", "sucre poudre", "sucre morceaux", "farine", "amandes poudes", "préparation dessert", "raisins secs", "vanille", "gousse vanille", "bougie anniv", "fécule de pomme de terre"]
 	},
 	{
 		"name": "6",
