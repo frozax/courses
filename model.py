@@ -182,9 +182,9 @@ class Model(object):
         for item in self.selected_items:
             aisle = self.get_aisle_from_product(item)
             if aisle != prev_aisle:
-                html += u"<h2 style=\"font-size: small; font-family: arial; margin-bottom: 0px; margin-top: 3px;\">%s</h2>" % enc(aisle)
+                html += u"<h2 style=\"font-size: x-small; font-family: arial; margin-bottom: 0px; margin-top: 3px;\">%s</h2>" % enc(aisle)
                 prev_aisle = aisle
-            html += u"<p style=\"font-size: small; font-family: arial; margin: 0px; margin-left: 10px;\">%s %s</p>" % (enc(item), enc(self.comments.get(item, u"")))
+            html += u"<p style=\"font-size: x-small; font-family: arial; margin: 0px; margin-left: 10px;\">%s %s</p>" % (enc(item), enc(self.comments.get(item, u"")))
 
         html += u"</p></html>"
 

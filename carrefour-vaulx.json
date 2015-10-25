@@ -14,7 +14,7 @@
 	},
 	{
 		"name": "73",
-		"products": ["cahier", "classement", "ecriture", "colle", "scotch"]
+		"products": ["cahier", "classement", "ecriture", "colle", "scotch", "feutres", "crayons de couleur"]
 	},
 	{
 		"name": "71",
@@ -149,7 +149,7 @@
 	},
 	{
 		"name": "fruits et légumes",
-		"products": ["melon", "oignon", "patate", "tomates", "tomates cerise", "concombre", "citron", "salade", "courgette", "poireau", "carotte", "poivron", "betterave", "champignon", "ail", "banane", "kiwi", "orange", "clémentine", "ananas", "citron", "brugnon", "échalotte", "pamplemousse", "navet", "raisin", "pomme", "pasteque", "fraise", "framboise", "avocat", "abricot", "cerise", "noix", "gingembre", "citron vert", "pruneau"]
+		"products": ["melon", "oignon", "patate", "tomates", "tomates cerise", "concombre", "citron", "salade", "courgette", "poireau", "carotte", "poivron", "betterave", "champignon", "ail", "banane", "kiwi", "orange", "clémentine", "ananas", "citron", "brugnon", "échalotte", "pamplemousse", "navet", "raisin", "pomme", "pasteque", "fraise", "framboise", "avocat", "abricot", "cerise", "noix entières", "gingembre", "citron vert", "pruneau"]
 	},
 	{
 		"name": "charcuterie fraîche",
@@ -161,7 +161,7 @@
 	},
 	{
 		"name": "28",
-		"products": ["caprice", "fromage rapé", "yop", "compotes", "fromage blanc", "babybel", "mozzarella", "vache qui rit", "mascarpone", "formage raclette", "fromage burger"]
+		"products": ["caprice", "fromage rapé", "yop", "compotes", "fromage blanc", "babybel", "mozzarella", "vache qui rit", "mascarpone", "fromage raclette", "fromage burger"]
 	},
 	{
 		"name": "fromagerie au détail",
@@ -185,7 +185,7 @@
 	},
 	{
 		"name": "17",
-		"products": ["viennoiserie", "croissants", "pâtisserie", "donuts", "gâteau", "pitch abricot", "pitch fraise", "pitch chocolat", "pitch autre", "pain de mie", "pain burger"]
+		"products": ["viennoiserie", "croissants", "pâtisserie", "donuts", "gâteau", "pitch abricot", "pitch fraise", "pitch chocolat", "pitch autre", "pain de mie", "pains toasts", "pain burger"]
 	},
 	{
 		"name": "boulangerie",
@@ -209,7 +209,7 @@
 	},
 	{
 		"name": "12",
-		"products": ["cookies", "goûters", "napolitain", "rond choco", "BN fraise", "BN chocolat"]
+		"products": ["cookies", "goûters", "napolitain", "rond choco", "BN fraise", "BN chocolat", "ptits chatons"]
 	},
 	{
 		"name": "11",
@@ -229,7 +229,7 @@
 	},
 	{
 		"name": "7",
-		"products": ["jus d'orange", "jus de fruits", "sucre poudre", "sucre morceaux", "farine", "amandes poudes", "préparation dessert", "raisins secs", "vanille", "gousse vanille", "bougie anniv", "fécule de pomme de terre"]
+		"products": ["jus d'orange", "jus de fruits", "sucre poudre", "sucre morceaux", "farine", "amandes poudes", "préparation dessert", "raisins secs", "pépites de chocolat", "noix morceaux", "vanille", "gousse vanille", "bougie anniv", "fécule de pomme de terre"]
 	},
 	{
 		"name": "6",
