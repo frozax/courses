@@ -14,7 +14,7 @@ class Model(object):
         # list of aisles
         self.shop = json.load(open("carrefour-vaulx.json"))
         self.aisles = self.shop["rayons"]
-        self.orders = self.shop["orders"][0]
+        self.orders = self.shop["orders"][1]
         self.order = self.orders["order"]
         aisles_used = [a["name"] for a in self.aisles]
         assert len(set(self.order)) == len(self.order)
