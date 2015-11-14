@@ -14,7 +14,7 @@
 	},
 	{
 		"name": "73",
-		"products": ["cahier", "classement", "ecriture", "colle", "scotch", "feutres", "crayons de couleur"]
+		"products": ["cahier", "classement", "crayon welleda", "ecriture", "colle", "scotch", "feutres", "crayons de couleur"]
 	},
 	{
 		"name": "71",
@@ -133,7 +133,7 @@
 	},
 	{
 		"name": "33",
-		"products": ["insecticide", "eau de javel", "désodorisant", "nettoyant sol"]
+		"products": ["insecticide", "eau de javel", "désodorisant", "nettoyant sol", "wc net", "debouche evier", "gants roses"]
 	},
 	{
 		"name": "32",
@@ -149,7 +149,7 @@
 	},
 	{
 		"name": "fruits et légumes",
-		"products": ["melon", "oignon", "patate", "tomates", "tomates cerise", "concombre", "citron", "salade", "courgette", "poireau", "carotte", "poivron", "betterave", "champignon", "ail", "banane", "kiwi", "orange", "clémentine", "ananas", "citron", "brugnon", "échalotte", "pamplemousse", "navet", "raisin", "pomme", "pasteque", "fraise", "framboise", "avocat", "abricot", "cerise", "noix entières", "gingembre", "citron vert", "pruneau"]
+		"products": ["melon", "oignon", "patate", "tomates", "tomates cerise", "concombre", "citron", "salade", "courgette", "poireau", "carotte", "poivron", "betterave", "champignon", "ail", "banane", "kiwi", "orange", "clémentine", "ananas", "citron", "brugnon", "échalotte", "pamplemousse", "navet", "raisin", "pomme", "pasteque", "fraise", "framboise", "avocat", "abricot", "cerise", "noix entières", "gingembre", "citron vert", "pruneau", "pot au feu"]
 	},
 	{
 		"name": "charcuterie fraîche",
@@ -201,7 +201,7 @@
 	},
 	{
 		"name": "14",
-		"products": ["bonbon", "tablette choco"]
+		"products": ["bonbon", "tablette choco", "snickers"]
 	},
 	{
 		"name": "13",
@@ -221,7 +221,7 @@
 	},
 	{
 		"name": "9",
-		"products": ["huile", "vinaigre alcool", "vinaigre balsamique", "sel", "ketchup", "mayonnaise", "sauce barbecue", "sauces fondue", "épices", "cornichons", "moutarde"]
+		"products": ["huile", "huile d'olive", "vinaigre alcool", "vinaigre balsamique", "sel", "ketchup", "mayonnaise", "sauce barbecue", "sauces fondue", "épices", "cornichons", "moutarde"]
 	},
 	{
 		"name": "8",
@@ -258,7 +258,7 @@
 	],
 	"orders": [
 	{
-		"name": "1",
+		"name": "entrée gauche",
 		"order": ["0",
  	"2",
  	"4",
@@ -347,6 +347,97 @@
  	"5",
  	"3",
  	"1"]
+		},
+	{
+		"name": "entrée droite",
+		"order": ["0",
+ 	"62",
+ 	"64",
+ 	"66",
+ 	"68",
+ 	"70",
+ 	"livres",
+ 	"informatique",
+ 	"77",
+ 	"75",
+ 	"sport",
+ 	"73",
+ 	"71",
+ 	"69",
+ 	"67",
+ 	"65",
+ 	"63",
+ 	"saisonnier",
+ 	"61",
+ 	"59",
+ 	"bijouterie",
+ 	"57",
+ 	"55",
+ 	"53",
+ 	"maison",
+ 	"51",
+ 	"49",
+ 	"47",
+ 	"45",
+ 	"43",
+ 	"41",
+ 	"39",
+ 	"37",
+ 	"35",
+ 	"33",
+ 	"31",
+ 	"boulangerie",
+ 	"poissonnerie",
+ 	"fruits et légumes",
+ 	"fromagerie au détail",
+ 	"29",
+ 	"27",
+ 	"25",
+ 	"23",
+ 	"21",
+ 	"19",
+ 	"17",
+ 	"15",
+ 	"13",
+ 	"11",
+ 	"boucherie",
+ 	"9",
+ 	"7",
+ 	"5",
+ 	"3",
+ 	"1",
+ 	"2",
+ 	"4",
+ 	"6",
+ 	"8",
+ 	"10",
+ 	"12",
+ 	"14",
+ 	"16",
+ 	"18",
+ 	"20",
+ 	"22",
+ 	"24",
+ 	"26",
+ 	"surgelés",
+ 	"28",
+ 	"30",
+ 	"charcuterie fraîche",
+ 	"32",
+ 	"34",
+ 	"36",
+ 	"38",
+ 	"40",
+ 	"42",
+ 	"44",
+ 	"46",
+ 	"48",
+ 	"50",
+ 	"52",
+ 	"54",
+ 	"56",
+ 	"58",
+ 	"60"]
 		}
 		]
 }
