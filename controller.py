@@ -70,7 +70,6 @@ class Controller(object):
         d = "/tmp"
         fname = os.path.join(d, "list.html")
         f = open(fname, "w")
-        print type(html)
         f.write(html.encode("utf-8"))
         f.close()
         webbrowser.open("file://%s" % fname)
