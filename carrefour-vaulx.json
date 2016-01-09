@@ -30,7 +30,7 @@
 	},
 	{
 		"name": "66",
-		"products": ["lave glace", "lubrifiant", "accessoire auto"]
+		"products": ["lave glace", "lubrifiant", "accessoire auto", "batterie voiture"]
 	},
 	{
 		"name": "64",
@@ -62,7 +62,7 @@
 	},
 	{
 		"name": "55",
-		"products": ["papier alu", "papier sulfurisé", "sac congélation", "café", "thé", "couverts"]
+		"products": ["papier alu", "papier sulfurisé", "sac congélation", "café", "thé", "couverts", "fêtes", "bougies étincelles", "chapeaux pointus", "serpentins"]
 	},
 	{
 		"name": "53",
@@ -133,7 +133,7 @@
 	},
 	{
 		"name": "33",
-		"products": ["insecticide", "eau de javel", "désodorisant", "nettoyant sol", "wc net", "debouche evier", "gants roses"]
+		"products": ["insecticide", "eau de javel", "désodorisant", "nettoyant sol", "viakal", "wc net", "debouche evier", "gants roses"]
 	},
 	{
 		"name": "32",
@@ -145,7 +145,7 @@
 	},
 	{
 		"name": "poissonnerie",
-		"products": ["sushis", "rillette saumon", "saumon fumé", "lardon saumon", "surimi", "oeufs de lompe", "tarama", "saumon"]
+		"products": ["sushis", "rillette saumon", "saumon fumé", "lardon saumon", "surimi", "oeufs de lompe", "oeufs saumon", "tarama", "saumon"]
 	},
 	{
 		"name": "fruits et légumes",
@@ -157,7 +157,7 @@
 	},
 	{
 		"name": "30",
-		"products": ["fjord", "petit suisse", "danette bleue", "danette verte", "danette choco", "danette autre", "danette vanille", "danette caramel", "danette vanille/choco", "liegois fruits", "riz au lait", "compoté", "semoule (yaourt)", "petit filou", "dessert fr", "yaourt fruits"]
+		"products": ["fjord", "petit suisse", "danette bleue", "danette verte", "danette choco", "danette autre", "danette vanille", "danette caramel", "danette vanille/choco", "liegois fruits", "riz au lait", "compoté", "semoule (yaourt)", "petit filou", "dessert fr", "mousse chocolat", "yaourt fruits"]
 	},
 	{
 		"name": "28",
@@ -173,7 +173,7 @@
 	},
 	{
 		"name": "22",
-		"products": ["knaki", "jambon", "lardons", "cervelas", "bacon", "saucisson", "pâte brisée", "pâte sablée", "pâte feuilletée", "pâte à pizza", "chorizo", "charcuterie raclette"]
+		"products": ["knaki", "jambon", "jambon cru", "lardons", "cervelas", "bacon", "saucisson", "pâte brisée", "pâte sablée", "pâte feuilletée", "pâte à pizza", "chorizo", "charcuterie raclette"]
 	},
 	{
 		"name": "20",
@@ -201,7 +201,7 @@
 	},
 	{
 		"name": "14",
-		"products": ["bonbon", "tablette chocolat", "chocolat blanc à cuire", "snickers"]
+		"products": ["bonbon", "tablette chocolat", "chocolat blanc à cuire", "chocolat noir à cuire", "snickers"]
 	},
 	{
 		"name": "13",
@@ -209,11 +209,11 @@
 	},
 	{
 		"name": "12",
-		"products": ["cookies", "goûters", "napolitain", "rond choco", "BN fraise", "BN chocolat", "ptits chatons"]
+		"products": ["cookies", "goûters", "napolitain", "rond choco", "BN fraise", "BN chocolat", "BN lait petit", "ptits chatons", "kinder"]
 	},
 	{
 		"name": "11",
-		"products": ["potages", "conserves légumes", "thon", "sardine"]
+		"products": ["potages", "conserves légumes", "thon", "sardine", "soupe", "croûtons"]
 	},
 	{
 		"name": "10",
@@ -229,7 +229,7 @@
 	},
 	{
 		"name": "7",
-		"products": ["jus d'orange", "jus de fruits", "sucre poudre", "sucre morceaux", "farine", "amandes poudes", "préparation dessert", "raisins secs", "pépites de chocolat", "noix morceaux", "vanille", "gousse vanille", "bougie anniv", "fécule de pomme de terre"]
+		"products": ["jus d'orange", "jus de fruits", "sucre poudre", "sucre morceaux", "farine", "amandes poudes", "préparation dessert", "raisins secs", "pépites de chocolat", "noix morceaux", "vanille", "gousse vanille", "bougie anniv", "fécule de pomme de terre", "levure"]
 	},
 	{
 		"name": "6",
