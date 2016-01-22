@@ -141,7 +141,7 @@
 	},
 	{
 		"name": "31",
-		"products": ["lessive", "adoucissant", "liquide vaisselle", "sel lave-vaisselle", "tablette lave-vaisselle", "produit lave-vaisselle"]
+		"products": ["lessive", "adoucissant", "liquide vaisselle", "sel lave-vaisselle", "tablette lave-vaisselle", "produit lave-vaisselle", "rincage lave-vaiselle"]
 	},
 	{
 		"name": "poissonnerie",
@@ -169,7 +169,7 @@
 	},
 	{
 		"name": "surgelés",
-		"products": ["glace", "haricots verts", "crêpes", "poissons panés"]
+		"products": ["glace", "haricots verts", "crêpes", "poissons panés", "petits pois"]
 	},
 	{
 		"name": "22",
@@ -201,15 +201,15 @@
 	},
 	{
 		"name": "14",
-		"products": ["bonbon", "tablette chocolat", "chocolat blanc à cuire", "chocolat noir à cuire", "snickers"]
+		"products": ["bonbon", "tablette chocolat", "chocolat blanc à cuire", "chocolat noir à cuire", "snickers", "nuts"]
 	},
 	{
 		"name": "13",
-		"products": ["riz", "sauce tomate", "pâtes", "lasagnes", "spaghettis", "coquillettes", "purée"]
+		"products": ["riz", "sauce tomate", "sauce bolognese", "pâtes", "vermicelles", "lasagnes", "spaghettis", "coquillettes", "purée"]
 	},
 	{
 		"name": "12",
-		"products": ["cookies", "goûters", "napolitain", "rond choco", "BN fraise", "BN chocolat", "BN lait petit", "ptits chatons", "kinder"]
+		"products": ["cookies", "goûters", "lulu abricot", "napolitain", "rond choco", "BN fraise", "BN chocolat", "BN lait petit", "ptits chatons", "kinder"]
 	},
 	{
 		"name": "11",
@@ -221,7 +221,7 @@
 	},
 	{
 		"name": "9",
-		"products": ["huile", "huile d'olive", "vinaigre alcool", "vinaigre balsamique", "sel", "ketchup", "mayonnaise", "sauce barbecue", "sauces fondue", "épices", "cornichons", "moutarde"]
+		"products": ["huile", "huile d'olive", "vinaigre alcool", "vinaigre balsamique", "sel", "ketchup", "mayonnaise", "sauce barbecue", "sauce burger", "sauces fondue", "épices", "cornichons", "moutarde"]
 	},
 	{
 		"name": "8",
@@ -241,7 +241,7 @@
 	},
 	{
 		"name": "3",
-		"products": ["bière", "chips", "gâteaux apéros"]
+		"products": ["bière", "chips", "gâteaux apéros", "cidre"]
 	},
 	{
 		"name": "2",
