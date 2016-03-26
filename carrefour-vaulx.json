@@ -6,7 +6,7 @@
 	},
 	{
 		"name": "boucherie",
-		"products": ["poulet", "escalope poulet", "escalope dinde", "steak haché", "steak", "saucisses", "roti porc", "roti boeuf"]
+		"products": ["poulet", "escalope poulet", "escalope dinde", "steak haché", "steak", "steak burger", "saucisses", "roti porc", "roti boeuf"]
 	},
 	{
 		"name": "75",
@@ -62,7 +62,7 @@
 	},
 	{
 		"name": "55",
-		"products": ["papier alu", "papier sulfurisé", "sac congélation", "café", "thé", "couverts", "fêtes", "bougies étincelles", "chapeaux pointus", "serpentins"]
+		"products": ["papier alu", "papier sulfurisé", "sac congélation", "café", "thé", "couverts", "petites cuilleres", "fêtes", "bougies étincelles", "chapeaux pointus", "serpentins"]
 	},
 	{
 		"name": "53",
@@ -74,7 +74,7 @@
 	},
 	{
 		"name": "50",
-		"products": ["bottes", "chaussons"]
+		"products": ["bottes", "chaussons", "bottes de neige"]
 	},
 	{
 		"name": "49",
@@ -101,7 +101,7 @@
 	},
 	{
 		"name": "43",
-		"products": ["gel douche", "dentifrice", "brosse à dent", "savon", "serviette hygienique"]
+		"products": ["gel douche", "dentifrice", "brosse à dent", "savon", "serviette hygienique", "protège slips"]
 	},
 	{
 		"name": "42",
@@ -145,11 +145,11 @@
 	},
 	{
 		"name": "poissonnerie",
-		"products": ["sushis", "rillette saumon", "saumon fumé", "lardon saumon", "surimi", "oeufs de lompe", "oeufs saumon", "tarama", "saumon"]
+		"products": ["sushis", "rillette saumon", "saumon fumé", "lardon saumon", "surimi", "oeufs de lompe", "oeufs saumon", "tarama", "saumon", "poisson"]
 	},
 	{
 		"name": "fruits et légumes",
-		"products": ["melon", "oignon", "patate", "tomates", "tomates cerise", "concombre", "citron", "salade", "courgette", "poireau", "carotte", "poivron", "betterave", "champignon", "ail", "banane", "kiwi", "orange", "clémentine", "ananas", "citron", "brugnon", "échalotte", "pamplemousse", "navet", "raisin", "pomme", "pasteque", "fraise", "framboise", "avocat", "abricot", "cerise", "noix entières", "gingembre", "citron vert", "pruneau", "pot au feu"]
+		"products": ["melon", "oignon", "patate", "tomates", "tomates cerise", "concombre", "citron", "salade", "courgette", "poireau", "carotte", "poivron", "betterave", "champignon", "ail", "banane", "kiwi", "orange", "clémentine", "ananas", "citron non traité", "brugnon", "échalotte", "pamplemousse", "navet", "raisin", "pomme", "pasteque", "fraise", "framboise", "avocat", "abricot", "cerise", "noix entières", "gingembre", "citron vert", "pruneau", "pot au feu"]
 	},
 	{
 		"name": "charcuterie fraîche",
@@ -181,7 +181,7 @@
 	},
 	{
 		"name": "18",
-		"products": ["biscottes", "pain grillé", "chocapic", "compotes à boire", "fruits au sirop", "barre céréales"]
+		"products": ["biscottes", "pain grillé", "chocapic", "chocapic noisette", "compotes à boire", "fruits au sirop", "barre céréales"]
 	},
 	{
 		"name": "17",
@@ -197,7 +197,7 @@
 	},
 	{
 		"name": "15",
-		"products": ["produits du monde", "épicerie fine", "produits régionaux", "cassoulet"]
+		"products": ["produits du monde", "épicerie fine", "produits régionaux", "cassoulet", "ravioli"]
 	},
 	{
 		"name": "14",
@@ -209,7 +209,7 @@
 	},
 	{
 		"name": "12",
-		"products": ["cookies", "goûters", "lulu abricot", "napolitain", "rond choco", "BN fraise", "BN chocolat", "BN lait petit", "ptits chatons", "kinder"]
+		"products": ["cookies", "goûters", "pepito chocolat", "lulu abricot", "lulu chocolat", "savane abricot", "napolitain", "rond choco", "rond choco blanc", "BN fraise", "BN chocolat", "BN lait petit", "ptits chatons", "kinder"]
 	},
 	{
 		"name": "11",
@@ -229,7 +229,7 @@
 	},
 	{
 		"name": "7",
-		"products": ["jus d'orange", "jus de fruits", "sucre poudre", "sucre morceaux", "farine", "amandes poudes", "préparation dessert", "raisins secs", "pépites de chocolat", "noix morceaux", "vanille", "gousse vanille", "bougie anniv", "fécule de pomme de terre", "levure"]
+		"products": ["jus d'orange", "jus de fruits", "sucre poudre", "sucre morceaux", "sucre vanillé", "farine", "amandes poudes", "préparation dessert", "raisins secs", "pépites de chocolat", "noix morceaux", "vanille", "gousse vanille", "bougie anniv", "fécule de pomme de terre", "levure"]
 	},
 	{
 		"name": "6",
