@@ -14,7 +14,7 @@
 	},
 	{
 		"name": "73",
-		"products": ["cahier", "classement", "crayon velleda", "ecriture", "colle", "scotch", "gomme", "feutres", "crayons de couleur"]
+		"products": ["cahier", "classement", "crayon velleda", "ecriture", "colle enfant", "scotch enfant", "gomme", "feutres", "crayons de couleur"]
 	},
 	{
 		"name": "71",
@@ -34,7 +34,7 @@
 	},
 	{
 		"name": "64",
-		"products": ["colle", "scotch", "peinture", "quincaillerie"]
+		"products": ["colle adule", "scotch adulte", "peinture", "quincaillerie"]
 	},
 	{
 		"name": "62",
@@ -78,7 +78,7 @@
 	},
 	{
 		"name": "49",
-		"products": ["salle de bain", "etendage", "cintre", "repassage", "eau déminéralisée"]
+		"products": ["salle de bain", "etendage", "épingles à linge", "cintre", "repassage", "eau déminéralisée"]
 	},
 	{
 		"name": "48",
@@ -157,11 +157,11 @@
 	},
 	{
 		"name": "30",
-		"products": ["fjord", "petit suisse", "danette bleue", "danette verte", "danette choco", "danette autre", "danette vanille", "danette caramel", "danette vanille/choco", "liegois fruits", "riz au lait", "compoté", "semoule (yaourt)", "petit filou", "dessert fr", "mousse chocolat", "yaourt fruits"]
+		"products": ["fjord", "petit suisse", "danette bleue", "danette verte", "danette choco", "danette autre", "danette vanille", "danette caramel", "danette vanille/choco", "riz au lait", "compoté", "semoule (yaourt)", "petit filou", "dessert fr", "mousse chocolat", "yaourt fruits"]
 	},
 	{
 		"name": "28",
-		"products": ["caprice", "fromage rapé", "yop", "compotes", "fromage blanc", "babybel", "mozzarella", "vache qui rit", "mascarpone", "fromage raclette", "fromage burger"]
+		"products": ["caprice", "fromage rapé", "yop", "compotes", "liegois fruits", "fromage blanc", "babybel", "mozzarella", "vache qui rit", "mascarpone", "fromage raclette", "fromage burger"]
 	},
 	{
 		"name": "fromagerie au détail",
@@ -209,7 +209,7 @@
 	},
 	{
 		"name": "12",
-		"products": ["cookies", "goûters", "pepito chocolat", "lulu abricot", "lulu chocolat", "savane abricot", "napolitain", "rond choco", "rond choco blanc", "BN fraise", "BN chocolat", "BN lait petit", "ptits chatons", "kinder"]
+		"products": ["cookies", "goûters", "pepito chocolat",  "lulu fraise", "lulu abricot", "lulu chocolat", "savane abricot", "napolitain", "rond choco", "rond choco blanc", "BN fraise", "BN chocolat", "BN lait petit", "ptits chatons", "kinder"]
 	},
 	{
 		"name": "11",
