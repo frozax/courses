@@ -14,7 +14,7 @@
 	},
 	{
 		"name": "73",
-		"products": ["cahier", "classement", "crayon velleda", "ecriture", "colle enfant", "scotch enfant", "gomme", "feutres", "crayons de couleur"]
+		"products": ["cahier", "classement", "crayon velleda", "ecriture", "colle enfant", "scotch enfant", "gomme", "feutres", "crayons de couleur", "cartable"]
 	},
 	{
 		"name": "71",
@@ -34,7 +34,7 @@
 	},
 	{
 		"name": "64",
-		"products": ["colle adule", "scotch adulte", "peinture", "quincaillerie"]
+		"products": ["colle adule", "scotch adulte", "peinture", "quincaillerie", "eau déminéralisée"]
 	},
 	{
 		"name": "62",
@@ -78,7 +78,7 @@
 	},
 	{
 		"name": "49",
-		"products": ["salle de bain", "etendage", "épingles à linge", "cintre", "repassage", "eau déminéralisée"]
+		"products": ["salle de bain", "etendage", "épingles à linge", "cintre", "repassage"]
 	},
 	{
 		"name": "48",
@@ -133,11 +133,11 @@
 	},
 	{
 		"name": "33",
-		"products": ["insecticide", "eau de javel", "désodorisant", "nettoyant sol", "viakal", "wc net", "debouche evier", "gants roses"]
+		"products": ["insecticide", "eau de javel", "désodorisant", "nettoyant sol", "vitroclen", "viakal", "wc net", "debouche evier", "gants roses"]
 	},
 	{
 		"name": "32",
-		"products": ["oeufs", "crême liquide", "lait entier", "lait demi-écremé", "beurre", "crême fraîche"]
+		"products": ["oeufs", "crême liquide", "lait entier", "lait demi-écremé", "beurre", "crême fraîche", "chantilly"]
 	},
 	{
 		"name": "31",
@@ -209,7 +209,7 @@
 	},
 	{
 		"name": "12",
-		"products": ["cookies", "goûters", "pepito chocolat",  "lulu fraise", "lulu abricot", "lulu chocolat", "savane abricot", "napolitain", "rond choco", "rond choco blanc", "BN fraise", "BN chocolat", "BN lait petit", "ptits chatons", "kinder"]
+		"products": ["cookies", "goûters", "petits écoliers", "pepito chocolat",  "lulu fraise", "lulu abricot", "lulu chocolat", "savane abricot", "napolitain", "rond choco", "rond choco blanc", "BN fraise", "BN chocolat", "BN lait petit", "ptits chatons", "kinder"]
 	},
 	{
 		"name": "11",
