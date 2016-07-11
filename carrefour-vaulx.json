@@ -74,7 +74,7 @@
 	},
 	{
 		"name": "50",
-		"products": ["bottes", "chaussons", "bottes de neige"]
+		"products": ["bottes", "chaussons", "tongs", "bottes de neige"]
 	},
 	{
 		"name": "49",
@@ -125,11 +125,11 @@
 	},
 	{
 		"name":"35",
-		"products": ["sac poubelle", "eponges", "sopalin", "essuie-tout", "pq"]
+		"products": ["sac poubelle", "eponges", "scotch brit", "sopalin", "essuie-tout", "pq"]
 	},
 	{
 		"name": "34",
-		"products": ["produits bio"]
+		"products": ["viennoiserie", "croissants", "pâtisserie", "donuts", "gâteau", "pitch abricot", "pitch fraise", "pitch chocolat", "pitch autre", "pain de mie", "pains toasts", "pain burger"]
 	},
 	{
 		"name": "33",
@@ -157,7 +157,7 @@
 	},
 	{
 		"name": "30",
-		"products": ["fjord", "petit suisse", "danette bleue", "danette verte", "danette choco", "danette autre", "danette vanille", "danette caramel", "danette vanille/choco", "riz au lait", "compoté", "semoule (yaourt)", "petit filou", "dessert fr", "mousse chocolat", "yaourt fruits"]
+		"products": ["fjord", "petit suisse", "danette bleue", "danette blanche", "danette mousse", "danette verte", "danette choco", "danette autre", "danette vanille", "danette caramel", "danette vanille/choco", "riz au lait", "compoté", "semoule (yaourt)", "petit filou", "dessert fr", "mousse chocolat", "yaourt fruits"]
 	},
 	{
 		"name": "28",
@@ -181,15 +181,15 @@
 	},
 	{
 		"name": "18",
-		"products": ["biscottes", "pain grillé", "chocapic", "chocapic noisette", "compotes à boire", "fruits au sirop", "barre céréales"]
-	},
-	{
-		"name": "17",
-		"products": ["viennoiserie", "croissants", "pâtisserie", "donuts", "gâteau", "pitch abricot", "pitch fraise", "pitch chocolat", "pitch autre", "pain de mie", "pains toasts", "pain burger"]
+		"products": ["biscottes", "pain grillé", "chocapic", "cocopops", "chocapic noisette", "compotes à boire", "fruits au sirop", "barre céréales"]
 	},
 	{
 		"name": "boulangerie",
 		"products": ["baguette", "donut", "chouqette"]
+	},
+	{
+		"name": "17",
+		"products": ["produits bio"]
 	},
 	{
 		"name": "16",
