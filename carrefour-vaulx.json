@@ -62,7 +62,7 @@
 	},
 	{
 		"name": "55",
-		"products": ["papier alu", "papier sulfurisé", "sac congélation", "café", "thé", "couverts", "petites cuilleres", "fêtes", "bougies étincelles", "chapeaux pointus", "serpentins"]
+		"products": ["papier alu", "papier sulfurisé", "sac congélation", "café", "thé", "couverts", "petites cuilleres", "cuillere en plastique", "fêtes", "bougies étincelles", "chapeaux pointus", "serpentins"]
 	},
 	{
 		"name": "53",
@@ -105,7 +105,7 @@
 	},
 	{
 		"name": "42",
-		"products": ["lingettes", "couches", "coton"]
+		"products": ["lingettes", "couches"]
 	},
 	{
 		"name": "41",
@@ -121,7 +121,7 @@
 	},
 	{
 		"name": "37",
-		"products": ["maquillage", "coton-tige", "soin visage", "crème solaire"]
+		"products": ["maquillage", "coton-tige", "coton", "soin visage", "crème solaire"]
 	},
 	{
 		"name":"35",
@@ -157,7 +157,7 @@
 	},
 	{
 		"name": "30",
-		"products": ["fjord", "petit suisse", "danette bleue", "danette blanche", "danette mousse", "danette verte", "danette choco", "danette autre", "danette vanille", "danette caramel", "danette vanille/choco", "riz au lait", "compoté", "semoule (yaourt)", "petit filou", "dessert fr", "mousse chocolat", "yaourt fruits"]
+		"products": ["fjord", "petit suisse", "danettes", "danette bleue", "danette blanche", "danette mousse", "danette verte", "danette choco", "danette autre", "danette vanille", "danette caramel", "danette vanille/choco", "riz au lait", "compoté", "semoule (yaourt)", "petit filou", "dessert fr", "mousse chocolat", "yaourt fruits"]
 	},
 	{
 		"name": "28",
@@ -181,7 +181,7 @@
 	},
 	{
 		"name": "18",
-		"products": ["biscottes", "pain grillé", "chocapic", "cocopops", "chocapic noisette", "compotes à boire", "fruits au sirop", "barre céréales"]
+		"products": ["biscottes", "pain grillé", "chocapic", "miel pops", "cocopops", "chocapic noisette", "compotes à boire", "fruits au sirop", "barre céréales"]
 	},
 	{
 		"name": "boulangerie",
@@ -201,7 +201,7 @@
 	},
 	{
 		"name": "14",
-		"products": ["bonbon", "tablette chocolat", "chocolat blanc à cuire", "chocolat noir à cuire", "snickers", "nuts"]
+		"products": ["dragibus", "crocodiles", "fraises tagada", "bananes tagada", "bonbon", "tablette chocolat", "chocolat blanc à cuire", "chocolat noir à cuire", "snickers", "nuts"]
 	},
 	{
 		"name": "13",
@@ -229,7 +229,7 @@
 	},
 	{
 		"name": "7",
-		"products": ["jus d'orange", "jus de fruits", "sucre poudre", "sucre morceaux", "sucre vanillé", "farine", "amandes poudes", "préparation dessert", "raisins secs", "pépites de chocolat", "noix morceaux", "vanille", "gousse vanille", "bougie anniv", "fécule de pomme de terre", "levure"]
+		"products": ["brique jus de fruits", "jus d'orange", "jus de fruits", "sucre poudre", "sucre morceaux", "sucre vanillé", "farine", "amandes poudes", "préparation dessert", "raisins secs", "pépites de chocolat", "noix morceaux", "vanille", "gousse vanille", "bougie anniv", "fécule de pomme de terre", "levure"]
 	},
 	{
 		"name": "6",
