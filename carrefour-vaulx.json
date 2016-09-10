@@ -229,7 +229,7 @@
 	},
 	{
 		"name": "7",
-		"products": ["brique jus de fruits", "jus d'orange", "jus de fruits", "sucre poudre", "sucre morceaux", "sucre vanillé", "farine", "amandes poudes", "préparation dessert", "raisins secs", "pépites de chocolat", "noix morceaux", "vanille", "gousse vanille", "bougie anniv", "fécule de pomme de terre", "levure"]
+		"products": ["jus d'orange", "jus de fruits", "sucre poudre", "sucre morceaux", "sucre vanillé", "farine", "amandes poudes", "préparation dessert", "raisins secs", "pépites de chocolat", "noix morceaux", "vanille", "gousse vanille", "bougie anniv", "fécule de pomme de terre", "levure"]
 	},
 	{
 		"name": "6",
@@ -249,7 +249,7 @@
 	},
 	{
 		"name": "1",
-		"products": ["eau grande bouteille", "eau petite bouteille", "champomy"]
+		"products": ["brique jus de fruits", "eau grande bouteille", "eau petite bouteille", "champomy"]
 	},
 	{
 		"name": "maison",
