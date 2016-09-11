@@ -1,4 +1,5 @@
 import os
+import json
 from bottle import route, run, SimpleTemplate, static_file
 from model import Model
 
@@ -13,10 +14,11 @@ def tpl(file_name, **kwargs):
     return ""
 
 
+model = Model()
+
 @route('/courses')
 def courses():
     items = []
-    model = Model("simple-shop.json", 0)
     cur_aisle = ""
     for item_name, item_type in model.get_shop_list():
         if item_type == "aisle-name":
@@ -34,6 +36,13 @@ def courses():
     ret += tpl("courses", items=items)
     ret += tpl("footer")
     return ret
+
+@route('/api/user_list')
+def user_list():
+    ul = model.get_user_list()
+    print(ul)
+    return json.dumps(ul)
+
 
 @route('/static/<path:path>')
 def static(path):

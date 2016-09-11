@@ -1,6 +1,16 @@
 <input type="search" id="item-autocomplete" name="item" />
+<div id="user-list">
+TODO
+</div>
 
 <script>
+
+function refresh_user_list() {
+	$.get( "/api/user_list", function(data) {
+		$("#user-list" ).html(data);
+	});
+}
+
 var elements = [
 % for item in items:
   { title: '{{item["name"]}}',
@@ -10,6 +20,8 @@ var elements = [
 ];
 
 $(document).ready(function() {
+
+	refresh_user_list();
 
   	// Local source, string array. Simplest setup possible
 	$('#item-autocomplete').betterAutocomplete('init', elements, {}, {
