@@ -10,7 +10,8 @@ HTML_END = "</u></b>"
 class Model(object):
     def __init__(self):
         # list of aisles
-        self.shop = json.load(open("carrefour-vaulx.json"))
+        with open("carrefour-vaulx.json") as f:
+            self.shop = json.load(f)
         self.aisles = self.shop["rayons"]
         self.orders = self.shop["orders"][1]
         self.order = self.orders["order"]

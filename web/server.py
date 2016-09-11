@@ -5,14 +5,17 @@ from model import Model
 PATH = os.path.dirname(os.path.realpath(__file__))
 
 def tpl(file_name, **kwargs):
-    template = SimpleTemplate(open(os.path.join(PATH, file_name + ".tpl")).read())
-    return template.render(
-        **kwargs
-    )
+    with open(os.path.join(PATH, file_name + ".tpl")) as tpl_file:
+        template = SimpleTemplate(tpl_file.read())
+        return template.render(
+            **kwargs
+        )
+    return ""
 
 
 @route('/courses')
 def courses():
+    model = Model()
 
     items = [{"name": "Yaourts", "aisle": 50}]
 
