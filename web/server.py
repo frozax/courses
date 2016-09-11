@@ -10,14 +10,16 @@ def tpl(file_name, **kwargs):
 
 @route('/courses')
 def courses():
+
+    items = [{"name": "Yaourts", "aisle": 50}]
+
     ret = tpl("header", title="Courses")
-    ret += tpl("courses")
+    ret += tpl("courses", items=items)
     ret += tpl("footer")
     return ret
 
 @route('/static/<path:path>')
 def static(path):
-    print(path)
     return static_file(path, root='static/')
 
 run(host='0.0.0.0', port=8080, debug=True, reloader=True)

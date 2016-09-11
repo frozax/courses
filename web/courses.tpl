@@ -1,8 +1,11 @@
 <input type="search" id="item-autocomplete" name="item" />
 
 <script>
-var cities = [
-  'Stockholm',
+var elements = [
+% for item in items:
+  { title: '{{item["name"]}}', group: '{{item["aisle"]}}' },
+% end
+  {title: 'Stockholm', group: "toto"},
   'New York',
   'Oslo',
   'San Fransisco',
@@ -18,9 +21,8 @@ var cities = [
 
 $(document).ready(function() {
 
-	console.log("toto");
   	// Local source, string array. Simplest setup possible
-	$('#item-autocomplete').betterAutocomplete('init', cities, {}, {});
+	$('#item-autocomplete').betterAutocomplete('init', elements, {}, {});
 });
 
 </script>
