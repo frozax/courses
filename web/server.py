@@ -16,7 +16,7 @@ def tpl(file_name, **kwargs):
 @route('/courses')
 def courses():
     items = []
-    model = Model()
+    model = Model("simple-shop.json", 0)
     cur_aisle = ""
     for item_name, item_type in model.get_shop_list():
         if item_type == "aisle-name":

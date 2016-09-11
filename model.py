@@ -8,12 +8,12 @@ HTML_START = "<b><u>"
 HTML_END = "</u></b>"
 
 class Model(object):
-    def __init__(self):
+    def __init__(self, shop="carrefour-vaulx.json", order_id=1):
         # list of aisles
-        with open("carrefour-vaulx.json") as f:
+        with open(shop) as f:
             self.shop = json.load(f)
         self.aisles = self.shop["rayons"]
-        self.orders = self.shop["orders"][1]
+        self.orders = self.shop["orders"][order_id]
         self.order = self.orders["order"]
         aisles_used = [a["name"] for a in self.aisles]
         assert len(set(self.order)) == len(self.order)
