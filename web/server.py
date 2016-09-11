@@ -1,5 +1,5 @@
-#!/usr/bin/env python
 from bottle import route, run, SimpleTemplate, static_file
+from model import Model
 
 def tpl(file_name, **kwargs):
     template = SimpleTemplate(open(file_name + ".tpl").read())
@@ -22,4 +22,5 @@ def courses():
 def static(path):
     return static_file(path, root='static/')
 
-run(host='0.0.0.0', port=8080, debug=True, reloader=True)
+def run_server():
+    run(host='0.0.0.0', port=8080, debug=True, reloader=True)
