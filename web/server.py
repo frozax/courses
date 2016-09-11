@@ -24,7 +24,9 @@ def courses():
         elif item_type == "spacer":
             continue
         elif item_type.endswith("product"):
-            items.append({"name": item_name, "aisle": cur_aisle})
+            items.append({"name": item_name,
+                          "aisle": cur_aisle,
+                          "simplified_name": model.remove_special_chars(item_name)})
         else:
             print("Unkown type: %s" % item_type)
 

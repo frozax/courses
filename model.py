@@ -1,6 +1,7 @@
 # coding: utf-8
 
 import json
+import unidecode
 import sys
 
 SAVE_FILE = "save.json"
@@ -44,8 +45,7 @@ class Model(object):
         self.load(SAVE_FILE)
 
     def remove_special_chars(self, text):
-        pass
-        #return unidecode.unidecode(text)
+        return unidecode.unidecode(text)
 
     def get_user_list(self):
         l = [(a, self.comments.get(a, ""), self.get_aisle_from_product(a) is None) for a in self.selected_items]
