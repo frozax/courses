@@ -1,9 +1,7 @@
-#!/usr/bin/python2
 # coding: utf-8
 
 import json
 import sys
-import unidecode
 
 SAVE_FILE = "save.json"
 HTML_START = "<b><u>"
@@ -21,7 +19,7 @@ class Model(object):
         assert len(set(aisles_used)) == len(aisles_used)
         missing_aisles = set(aisles_used) - set(self.order)
         if len(missing_aisles) > 0:
-            print "Missing aisles in order: %s" % str(missing_aisles)
+            print("Missing aisles in order: %s" % str(missing_aisles))
             sys.exit(1)
 
         # sort shop accord to self.order
@@ -45,7 +43,8 @@ class Model(object):
         self.load(SAVE_FILE)
 
     def remove_special_chars(self, text):
-        return unidecode.unidecode(text)
+        pass
+        #return unidecode.unidecode(text)
 
     def get_user_list(self):
         l = [(a, self.comments.get(a, ""), self.get_aisle_from_product(a) is None) for a in self.selected_items]
