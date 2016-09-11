@@ -15,9 +15,18 @@ def tpl(file_name, **kwargs):
 
 @route('/courses')
 def courses():
+    items = []
     model = Model()
-
-    items = [{"name": "Yaourts", "aisle": 50}]
+    cur_aisle = ""
+    for item_name, item_type in model.get_shop_list():
+        if item_type == "aisle-name":
+            cur_aisle = item_name
+        elif item_type == "spacer":
+            continue
+        elif item_type.endswith("product"):
+            items.append({"name": item_name, "aisle": cur_aisle})
+        else:
+            print("Unkown type: %s" % item_type)
 
     ret = tpl("header", title="Courses")
     ret += tpl("courses", items=items)

@@ -5,18 +5,6 @@ var elements = [
 % for item in items:
   { title: '{{item["name"]}}', group: '{{item["aisle"]}}' },
 % end
-  {title: 'Stockholm', group: "toto"},
-  'New York',
-  'Oslo',
-  'San Fransisco',
-  'Säffle',
-  'Göteborg',
-  'Mogadishu',
-  'Washington',
-  'Madrid',
-  'Paris',
-  'Arboga',
-  'Moscow'
 ];
 
 $(document).ready(function() {
