@@ -47,15 +47,24 @@ function update_user_list_on_page(user_data)
 	layout_list(elem, 20);
 }
 
-function remove_item(item)
+function post(url, dict, success)
 {
-	$.ajax({url: "/api/user_list/remove_item", 
-		    data: JSON.stringify({item: item}), 
+	$.ajax({url: url,
+		    data: JSON.stringify(dict),
             type: "POST",
 		    contentType: "application/json",
-            success: update_user_list_on_page});
+            success: success});
 }
 
+function remove_item(item)
+{
+	post("/api/user_list/remove_item", {item: item}, update_user_list_on_page);
+}
+
+function add_item_to_list(item)
+{
+	post("/api/user_list/add_item", {item: item}, update_user_list_on_page);
+}
 
 function refresh_user_list()
 {
@@ -77,7 +86,7 @@ $(document).ready(function() {
   	// Local source, string array. Simplest setup possible
 	$('#item-autocomplete').betterAutocomplete('init', elements, {}, {
 		select: function(result, $input) { // Custom select callback
-			console.log($input);
+			add_item_to_list(result.title);
 		},
 		queryLocalResults: function(query, resource, caseSensitive) {
 			var results = [];
