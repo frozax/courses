@@ -50,6 +50,12 @@ def user_list_remove_item():
     model.user_list_remove_item(item)
     return user_list()
 
+@route('/api/user_list/add_item', method="POST")
+def user_list_add_item():
+    item = request.json["item"]
+    model.add_item(item)
+    return user_list()
+
 @route('/static/<path:path>')
 def static(path):
     return static_file(path, root=os.path.join(PATH, 'static/'))
