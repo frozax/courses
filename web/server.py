@@ -1,6 +1,6 @@
 import os
 import json
-from bottle import route, run, SimpleTemplate, static_file, response
+from bottle import route, run, SimpleTemplate, static_file, response, request
 from model import Model
 
 PATH = os.path.dirname(os.path.realpath(__file__))
@@ -44,6 +44,11 @@ def user_list():
     response.content_type = 'application/json'
     return json.dumps(ul)
 
+@route('/api/user_list/remove_item', method="POST")
+def user_list_remove_item():
+    item = request.json["item"]
+    model.user_list_remove_item(item)
+    return user_list()
 
 @route('/static/<path:path>')
 def static(path):

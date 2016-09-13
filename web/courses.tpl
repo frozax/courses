@@ -26,19 +26,40 @@ function layout_list(container, max_items_per_col) {
     });
 }
 
-function refresh_user_list() {
-	$.get( "/api/user_list", function(data) {
-		html = "<ul class=\"split-list\">\n";
-		data.forEach(function(item) {
-			html += "<li>" + item[0];
-			html += "<input type=\"text\" value=\"" + item[1] + "\">";
-			html += "</li>\n";
+function update_user_list_on_page(user_data)
+{
+	var l = $("#user-list");
+	l.html("<ul class=\"split-list\">\n");
+	var ul = l.find(".split-list");
+	var i = 0;
+	user_data.forEach(function(item) {
+		var item_name = "userlistitem" + i;
+		html_item = "<li><div id=\"" + item_name + "\">" + item[0] + "</div>";
+		html_item += "<input type=\"text\" value=\"" + item[1] + "\">";
+		html_item += "</li>\n";
+		ul.append(html_item);
+		$("#" + item_name).click({item_name: item[0]}, function(data) { 
+			remove_item(data.data.item_name);
 		});
-		html += "</ul>\n";
-		$("#user-list").html(html);
-		var elem = $("#user-list .split-list");
-		layout_list(elem, 20);
+		i++;
 	});
+	var elem = $("#user-list .split-list");
+	layout_list(elem, 20);
+}
+
+function remove_item(item)
+{
+	$.ajax({url: "/api/user_list/remove_item", 
+		    data: JSON.stringify({item: item}), 
+            type: "POST",
+		    contentType: "application/json",
+            success: update_user_list_on_page});
+}
+
+
+function refresh_user_list()
+{
+	$.get("/api/user_list", update_user_list_on_page);
 }
 
 var elements = [
