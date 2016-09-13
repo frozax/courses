@@ -1,6 +1,6 @@
 import os
 import json
-from bottle import route, run, SimpleTemplate, static_file
+from bottle import route, run, SimpleTemplate, static_file, response
 from model import Model
 
 PATH = os.path.dirname(os.path.realpath(__file__))
@@ -41,6 +41,7 @@ def courses():
 def user_list():
     ul = model.get_user_list()
     print(ul)
+    response.content_type = 'application/json'
     return json.dumps(ul)
 
 
