@@ -142,6 +142,7 @@ $(document).ready(function() {
 	$('#item-autocomplete').betterAutocomplete('init', elements, {}, {
 		select: function(result, $input) { // Custom select callback
 			add_item(result.title);
+			$input[0].value = "";
 		},
 		queryLocalResults: function(query, resource, caseSensitive) {
 			var results = [];
