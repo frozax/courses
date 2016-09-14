@@ -71,9 +71,9 @@ function update_shop_list_on_page(shop_data)
 		if (item[1] == "product" || item[1] == "selected-product") {
 			$("#" + item_name).click({item_name: item[0], selected: item[1] == "selected-product"}, function(data) { 
 				if (data.data.selected)
-					add_item(data.data.item_name);
-				else
 					remove_item(data.data.item_name);
+				else
+					add_item(data.data.item_name);
 			});
 		}
 		i++;
@@ -92,12 +92,18 @@ function post(url, dict, success)
 
 function remove_item(item)
 {
-	post("/api/user_list/remove_item", {item: item}, update_user_list_on_page);
+	post("/api/user_list/remove_item", {item: item}, refresh_both_lists);
 }
 
-function add_item_to_list(item)
+function add_item(item)
 {
-	post("/api/user_list/add_item", {item: item}, update_user_list_on_page);
+	post("/api/user_list/add_item", {item: item}, refresh_both_lists);
+}
+
+function refresh_both_lists()
+{
+	refresh_user_list();
+	refresh_shop_list();
 }
 
 function refresh_user_list()
@@ -126,7 +132,7 @@ $(document).ready(function() {
   	// Local source, string array. Simplest setup possible
 	$('#item-autocomplete').betterAutocomplete('init', elements, {}, {
 		select: function(result, $input) { // Custom select callback
-			add_item_to_list(result.title);
+			add_item(result.title);
 		},
 		queryLocalResults: function(query, resource, caseSensitive) {
 			var results = [];
