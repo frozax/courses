@@ -64,4 +64,4 @@ def static(path):
     return static_file(path, root=os.path.join(PATH, 'static/'))
 
 def run_server():
-    run(host='0.0.0.0', port=8080, debug=True, reloader=True)
+    run(host='0.0.0.0', server='cherrypy', port=8080, debug=True, reloader=True)
