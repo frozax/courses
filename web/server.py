@@ -40,9 +40,14 @@ def courses():
 @route('/api/user_list')
 def user_list():
     ul = model.get_user_list()
-    print(ul)
     response.content_type = 'application/json'
     return json.dumps(ul)
+
+@route('/api/shop_list')
+def shop_list():
+    sl = model.get_shop_list()
+    response.content_type = 'application/json'
+    return json.dumps(sl)
 
 @route('/api/user_list/remove_item', method="POST")
 def user_list_remove_item():

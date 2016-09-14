@@ -55,8 +55,8 @@ class Model(object):
         self.selected_items = []
 
     def get_shop_list(self):
-        # return list of 3-tuples:
-        #  text, selectable (or not), selected (or not)
+        # return list of 2-tuples:
+        #  text, status
         ret = []
         for aisle in self.shop["rayons"]:
             if "name" in aisle and "products" in aisle:
