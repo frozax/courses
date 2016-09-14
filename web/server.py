@@ -59,6 +59,12 @@ def user_list_add_item():
     item = request.json["item"]
     model.add_item(item)
 
+@route('/api/user_list/update_comment', method="POST")
+def update_product_comment():
+    item = request.json
+    print(item)
+    model.update_product_comment(item["product"], item["comment"])
+
 @route('/static/<path:path>')
 def static(path):
     return static_file(path, root=os.path.join(PATH, 'static/'))

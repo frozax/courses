@@ -29,6 +29,12 @@ function layout_list(container, max_items_per_col) {
     });
 }
 
+
+function update_product_comment(product, comment)
+{
+	post("/api/user_list/update_comment", {product: product, comment: comment}, refresh_both_lists);
+}
+
 function update_user_list_on_page(user_data)
 {
 	var l = $("#user-list");
@@ -38,11 +44,14 @@ function update_user_list_on_page(user_data)
 	user_data.forEach(function(item) {
 		var item_name = "userlistitem" + i;
 		html_item = "<li><div id=\"" + item_name + "\">" + item[0] + "</div>";
-		html_item += "<input type=\"text\" value=\"" + item[1] + "\">";
+		html_item += "<input id=\"" + item_name + "input\" type=\"text\" value=\"" + item[1] + "\">";
 		html_item += "</li>\n";
 		ul.append(html_item);
 		$("#" + item_name).click({item_name: item[0]}, function(data) { 
 			remove_item(data.data.item_name);
+		});
+		$("#" + item_name + "input").change({item_name: item[0]}, function(event) {
+			update_product_comment(event.data.item_name, event.currentTarget.value);
 		});
 		i++;
 	});
