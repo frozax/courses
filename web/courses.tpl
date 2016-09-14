@@ -66,15 +66,26 @@ function update_shop_list_on_page(shop_data)
 	var i = 0;
 	shop_data.forEach(function(item) {
 		var item_name = "shoplistitem" + i;
-		var html_item = "<li><div id='" + item_name + "'>";
+		var li_class = "";
+		var inner_code = "";
 		if (item[1] == "aisle-name")
-			html_item += "<b>" + item[0] + "</b>";
+		{
+			li_class = "li_aisle";
+		}
 		else if (item[1] == "spacer")
-			html_item += "&nbsp;";
+		{
+			li_class = "li_spacer";
+		}
 		else if (item[1] == "product")
-			html_item += item[0]
+		{
+			li_class = "li_product";
+		}
 		else if(item[1] == "selected-product")
-			html_item += "<font color='#f00'>" + item[0] + "</font>"
+		{
+			li_class = "li_product_selected";
+		}
+		var html_item = "<li class=\"" + li_class + "\"><div id='" + item_name + "'>";
+		html_item += item[0];
 		html_item += "</div></li>\n";
 		ul.append(html_item);
 		if (item[1] == "product" || item[1] == "selected-product") {

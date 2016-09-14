@@ -1,3 +1,16 @@
+.li_aisle{
+	padding-top: 10px;
+    font-weight: bold;
+}
+
+.li_product, .li_spacer, .li_product_selected{
+	list-style-type: none;
+}
+
+.li_product_selected{
+	color: #f00
+}
+
 .split-list ul{
   float: left;
   margin-left: 1em;
