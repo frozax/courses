@@ -38,13 +38,13 @@ def courses():
     return ret
 
 @route('/api/user_list')
-def user_list():
+def get_user_list():
     ul = model.get_user_list()
     response.content_type = 'application/json'
     return json.dumps(ul)
 
 @route('/api/shop_list')
-def shop_list():
+def get_shop_list():
     sl = model.get_shop_list()
     response.content_type = 'application/json'
     return json.dumps(sl)
@@ -53,17 +53,19 @@ def shop_list():
 def user_list_remove_item():
     item = request.json["item"]
     model.user_list_remove_item(item)
+    model.save()
 
 @route('/api/user_list/add_item', method="POST")
 def user_list_add_item():
     item = request.json["item"]
     model.add_item(item)
+    model.save()
 
 @route('/api/user_list/update_comment', method="POST")
 def update_product_comment():
     item = request.json
-    print(item)
     model.update_product_comment(item["product"], item["comment"])
+    model.save()
 
 @route('/static/<path:path>')
 def static(path):
