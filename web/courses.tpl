@@ -2,7 +2,7 @@
 <table><tr><td>
 	<div id="user-list">
 	</div>
-</td><td>
+</td><td style="width: 100%">
 	<div id="shop-list">
 	</div>
 </td></tr></table>
@@ -43,8 +43,8 @@ function update_user_list_on_page(user_data)
 	var i = 0;
 	user_data.forEach(function(item) {
 		var item_name = "userlistitem" + i;
-		html_item = "<li><div id=\"" + item_name + "\">" + item[0] + "</div>";
-		html_item += "<input id=\"" + item_name + "input\" type=\"text\" value=\"" + item[1] + "\">";
+		html_item = "<li class=\"li_user_item\"><div class='div_user_item' id=\"" + item_name + "\">" + item[0] + "</div>";
+		html_item += "<div class='div_user_comment'><input id=\"" + item_name + "input\" type=\"text\" value=\"" + item[1] + "\"></div>";
 		html_item += "</li>\n";
 		ul.append(html_item);
 		$("#" + item_name).click({item_name: item[0]}, function(data) { 
@@ -74,7 +74,8 @@ function update_shop_list_on_page(shop_data)
 		}
 		else if (item[1] == "spacer")
 		{
-			li_class = "li_spacer";
+			return;
+			//li_class = "li_spacer";
 		}
 		else if (item[1] == "product")
 		{

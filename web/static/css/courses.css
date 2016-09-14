@@ -1,3 +1,41 @@
+#user-list ul li div {
+	display: inline-block;
+}
+
+#user-list ul{
+	padding-left: 0px;
+}
+
+#user-list li{
+	margin-top: -4px;
+}
+
+.div_user_comment, .div_user_comment input{
+	width: 50px;
+}
+
+.div_user_item{
+	width: 140px;
+}
+
+.li_user_item{
+	list-style-type: none;
+	width: 200px;
+}
+
+.li_aisle{
+    font-weight: bold;
+}
+
+.li_product, .li_product_selected{
+	list-style-type: none;
+	margin-top: -8px;
+}
+
+.li_product_selected{
+	color: #f00
+}
+
 table td, table td * {
 	vertical-align: top;
 }
