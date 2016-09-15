@@ -1,9 +1,9 @@
-#user-list ul li div {
-	display: inline-block;
+#user-list ul, #shop-list ul{
+	padding-left: 0px;
 }
 
-#user-list ul{
-	padding-left: 0px;
+#user-list ul li div {
+	display: inline-block;
 }
 
 #user-list li{
@@ -23,8 +23,17 @@
 	width: 200px;
 }
 
+#shop-list li{
+	white-space: nowrap;
+	width: 130px;
+	font-size: 0.9em;
+}
+
 .li_aisle{
+	list-style-type: none;
     font-weight: bold;
+	font-size: 1.1em;
+	padding-left: 10px;
 }
 
 .li_product, .li_product_selected{

@@ -1,5 +1,5 @@
-<input type="search" id="item-autocomplete" name="item" />
 <table><tr><td>
+	<input type="search" id="item-autocomplete" name="item" />
 	<div id="user-list">
 	</div>
 </td><td style="width: 100%">
@@ -7,6 +7,12 @@
 	</div>
 </td></tr></table>
 <script>
+
+//
+// TODO TODO
+// Récupérer la liste du magasin une fois pour toute, conserver les données brutes à un format qui nous plait (celle du REST par exemple).
+// Puis créer la liste et avec des fonctino set_item_state(id, "user-selected") changer que ce qu'il faut
+
 
 // https://codepen.io/anon/pen/LRGQAv
 
@@ -55,7 +61,7 @@ function update_user_list_on_page(user_data)
 		});
 		i++;
 	});
-	layout_list(ul, 50);
+	layout_list(ul, 70);
 }
 
 function update_shop_list_on_page(shop_data)
@@ -92,14 +98,14 @@ function update_shop_list_on_page(shop_data)
 		if (item[1] == "product" || item[1] == "selected-product") {
 			$("#" + item_name).click({item_name: item[0], selected: item[1] == "selected-product"}, function(data) { 
 				if (data.data.selected)
-					remove_item(data.data.item_name);
+					remove_item(data.currentTarget, data.data.item_name);
 				else
 					add_item(data.data.item_name);
 			});
 		}
 		i++;
 	});
-	layout_list(ul, 20);
+	layout_list(ul, 56);
 }
 
 function post(url, dict, success)
@@ -111,9 +117,16 @@ function post(url, dict, success)
             success: success});
 }
 
-function remove_item(item)
+function remove_item(target, item)
 {
-	post("/api/user_list/remove_item", {item: item}, refresh_both_lists);
+	post("/api/user_list/remove_item", {item: item}, function(){
+		// success, refresh user list and select our list
+		refresh_user_list();
+		if (target) {
+			target.parentNode.className = "li_product";
+		}
+		//refresh_both_lists();
+	});
 }
 
 function add_item(item)
