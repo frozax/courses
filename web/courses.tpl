@@ -179,7 +179,7 @@ $(document).ready(function() {
 		// create autocomplete data
 		var elements = Array();
 		SHOP_LIST.forEach(function (item) {
-			elements.push({"name": item.item.name, "group": item.item.aisle, "simplified_name": item.item.simplified_name});
+			elements.push({"title": item.item.name, "group": item.item.aisle, "simplified_name": item.item.simplified_name});
 		});
 
 		var new_item = true;
