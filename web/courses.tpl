@@ -54,7 +54,7 @@ function update_user_list_on_page(user_data)
 		html_item += "</li>\n";
 		ul.append(html_item);
 		$("#" + item_name).click({item_name: item[0]}, function(data) { 
-			remove_item(data.data.item_name);
+			remove_item(data.data.item_name, null);
 		});
 		$("#" + item_name + "input").change({item_name: item[0]}, function(event) {
 			update_product_comment(event.data.item_name, event.currentTarget.value);
@@ -96,11 +96,13 @@ function update_shop_list_on_page(shop_data)
 		html_item += "</div></li>\n";
 		ul.append(html_item);
 		if (item[1] == "product" || item[1] == "selected-product") {
-			$("#" + item_name).click({item_name: item[0], selected: item[1] == "selected-product"}, function(data) { 
-				if (data.data.selected)
-					remove_item(data.currentTarget, data.data.item_name);
+			$("#" + item_name).click({item_name: item[0]}, function(data) { 
+				var selected = data.currentTarget.parentNode.className == "li_product_selected";
+				console.log(selected);
+				if (selected)
+					remove_item(data.data.item_name, data.currentTarget);
 				else
-					add_item(data.data.item_name);
+					add_item(data.data.item_name, data.currentTarget);
 			});
 		}
 		i++;
@@ -117,7 +119,7 @@ function post(url, dict, success)
             success: success});
 }
 
-function remove_item(target, item)
+function remove_item(item, target)
 {
 	post("/api/user_list/remove_item", {item: item}, function(){
 		// success, refresh user list and select our list
@@ -125,13 +127,17 @@ function remove_item(target, item)
 		if (target) {
 			target.parentNode.className = "li_product";
 		}
-		//refresh_both_lists();
 	});
 }
 
-function add_item(item)
+function add_item(item, target)
 {
-	post("/api/user_list/add_item", {item: item}, refresh_both_lists);
+	post("/api/user_list/add_item", {item: item}, function() {
+		refresh_user_list();
+		if (target) {
+			target.parentNode.className = "li_product_selected";
+		}
+	});
 }
 
 function refresh_both_lists()
@@ -166,7 +172,7 @@ $(document).ready(function() {
   	// Local source, string array. Simplest setup possible
 	$('#item-autocomplete').betterAutocomplete('init', elements, {}, {
 		select: function(result, $input) { // Custom select callback
-			add_item(result.title);
+			add_item(result.title, null);
 			$input[0].value = "";
 		},
 		queryLocalResults: function(query, resource, caseSensitive) {
