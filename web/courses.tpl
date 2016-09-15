@@ -48,7 +48,7 @@ function layout_list(container, max_items_per_col) {
 
 function update_product_comment(product, comment)
 {
-	post("/api/user_list/update_comment", {product: product, comment: comment}, refresh_both_lists);
+	post("/api/user_list/update_comment", {product: product, comment: comment});
 }
 
 function update_user_list_on_page(user_data)
@@ -67,31 +67,28 @@ function update_user_list_on_page(user_data)
 		html_item += "<div class='div_user_comment'><input id=\"" + html_id + "input\" type=\"text\" value=\"" + item[1] + "\"></div>";
 		html_item += "</li>\n";
 		ul.append(html_item);
-		$("#" + html_id).click({actual_item_param: actual_item}, function(data) { 
-			remove_item(actual_item_param);
+		$("#" + html_id).click({actual_item_param: actual_item}, function(event) { 
+			remove_item(event.data.actual_item_param.item.name);
 		});
 		$("#" + html_id + "input").change({actual_item_param: actual_item}, function(event) {
-			update_product_comment(actual_item_param, event.currentTarget.value);
+			update_product_comment(event.data.actual_item_param.item.name, event.currentTarget.value);
 		});
 		i++;
 	});
 	update_shop_list_selections();	
 	layout_list(ul, 70);
 }
-
+	
 function _toggle_item(item)
 {
-	index = _get_item_index(item_name);
-	var selected = shop_list[index]["selected"];
-	shop_list[index]["selected"] = !shop_list[index]["selected"];
-	if (selected) {
-		remove_item(index);
-		_get_item_selector(item_name).removeClass("selected");
+	item.selected = !item.selected;
+	if (item.selected) {
+		add_item(item.item.name);
 	}
 	else {
-		add_item(index);
-		_get_item_selector(item_name).addClass("selected");
+		remove_item(item.item.name);
 	}
+	update_shop_list_selections();
 }
 
 // set up the shop list on the page
@@ -124,8 +121,8 @@ function init_shop_list_on_page(data)
 			item_shop_list = {item: src_item, html_obj: html_obj, selected:false}
 			SHOP_LIST.push(item_shop_list);
 			ITEM_NAME_TO_ITEM[src_item.name] = item_shop_list;
-			html_obj.click({item: item_shop_list}, function(data) { 
-				_toggle_item(item);
+			html_obj.click({item: item_shop_list}, function(event) { 
+				_toggle_item(event.data.item);
 			});
 		}
 		i++;
@@ -153,24 +150,18 @@ function post(url, dict, success)
             success: success});
 }
 
-function remove_item(index_index)
+function remove_item(item)
 {
-	var item_name = _get_item_name(index_index);
-	_get_item_selector(item_name).removeClass("selected");
-	post("/api/user_list/remove_item", {item: shop_list[item_index]["name"]}, function(){
+	post("/api/user_list/remove_item", {item: item}, function(){
 		// success, refresh user list
 		refresh_user_list();
 	});
 }
 
-function add_item(index_item)
+function add_item(item)
 {
 	post("/api/user_list/add_item", {item: item}, function() {
 		refresh_user_list();
-		if (target)
-			target.parentNode.className = "li_product_selected";
-		else
-			refresh_shop_list();
 	});
 }
 
