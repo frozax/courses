@@ -196,9 +196,14 @@ $(document).ready(function() {
 				var results = [];
 				query = query.unidecode();
 				$.each(resource, function(i, value) {
-					if(value.simplified_name.indexOf(query) >= 0) {
+					var found = value.simplified_name.indexOf(query);
+					if(found >= 0) {
 						// Match found in title field
-						results.push(value);
+						if (found == 0)
+							//add in front if important
+							results.unshift(value);
+						else	
+							results.push(value);
 					}
 				});
 				return results;
