@@ -124,9 +124,10 @@ function remove_item(item, target)
 	post("/api/user_list/remove_item", {item: item}, function(){
 		// success, refresh user list and select our list
 		refresh_user_list();
-		if (target) {
+		if (target)
 			target.parentNode.className = "li_product";
-		}
+		else
+			refresh_shop_list();
 	});
 }
 
@@ -134,9 +135,10 @@ function add_item(item, target)
 {
 	post("/api/user_list/add_item", {item: item}, function() {
 		refresh_user_list();
-		if (target) {
+		if (target)
 			target.parentNode.className = "li_product_selected";
-		}
+		else
+			refresh_shop_list();
 	});
 }
 
