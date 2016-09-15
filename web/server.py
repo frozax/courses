@@ -67,6 +67,8 @@ def user_list_remove_item():
 @route('/api/user_list/add_item', method="POST")
 def user_list_add_item():
     item = request.json["item"]
+    if not model.exists(item):
+        model.add_item_to_shop_list_temporarily(item)
     model.add_item(item)
     model.save()
 

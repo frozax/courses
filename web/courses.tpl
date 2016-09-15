@@ -60,18 +60,20 @@ function update_user_list_on_page(user_data)
 	var ul = l.find(".split-list");
 	var i = 0;
 	user_data.forEach(function(item) {
-		actual_item = ITEM_NAME_TO_ITEM[item[0]];
-		actual_item.selected = true;
+		if (item[0] in ITEM_NAME_TO_ITEM) {
+			actual_item = ITEM_NAME_TO_ITEM[item[0]];
+			actual_item.selected = true;
+		}
 		var html_id = "userlistitem" + i;
 		html_item = "<li class=\"li_user_item\"><div class='div_user_item' id=\"" + html_id + "\">" + item[0] + "</div>";
 		html_item += "<div class='div_user_comment'><input id=\"" + html_id + "input\" type=\"text\" value=\"" + item[1] + "\"></div>";
 		html_item += "</li>\n";
 		ul.append(html_item);
-		$("#" + html_id).click({actual_item_param: actual_item}, function(event) { 
-			remove_item(event.data.actual_item_param.item.name);
+		$("#" + html_id).click({item_name: item[0]}, function(event) { 
+			remove_item(event.data.item_name);
 		});
-		$("#" + html_id + "input").change({actual_item_param: actual_item}, function(event) {
-			update_product_comment(event.data.actual_item_param.item.name, event.currentTarget.value);
+		$("#" + html_id + "input").change({item_name: item[0]}, function(event) {
+			update_product_comment(event.data.item_name, event.currentTarget.value);
 		});
 		i++;
 	});
@@ -202,18 +204,10 @@ $(document).ready(function() {
 				return results;
 			}
 		}).keydown(function (e) {
-			if(e.keyCode == 13)  // the enter key code
+			if(e.keyCode == 13 && new_item)  // the enter key code
 			{
-				if (new_item)
-				{
-			/*if not self.model.exists(item):
-				if self.view.msg_box_yesno(u"Ajouter %s à la liste?" % item):
-					self.model.add_item_to_shop_list_temporarily(item)
-				else:
-					return None
-			self.model.add_item(item)*/
-					// 
-				}
+				// add it anyway
+				add_item(e.currentTarget.value);
 			}
 			new_item = true; // not known until selected
 		});   
