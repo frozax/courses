@@ -175,7 +175,10 @@ class Model(object):
 
     def generate_html_user_list(self):
         def enc(text):
-            return text.encode('ascii', 'xmlcharrefreplace')
+            if sys.version_info[0] < 3:
+                return text.encode('ascii', 'xmlcharrefreplace')
+            else:
+                return text
 
         html = u"<html><p style=\"font-family: Arial\">"
         prev_aisle = None

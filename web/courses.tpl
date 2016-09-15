@@ -1,5 +1,8 @@
 <table><tr><td>
-	<input type="search" id="item-autocomplete" name="item" />
+	<div style="display: inline-block">
+		<input type="search" id="item-autocomplete" name="item" />
+		<a class="btn" href="courses/print/"><i class="fa fa-print"></i> Print</a>
+	</div>
 	<div id="user-list">
 	</div>
 </td><td style="width: 100%">

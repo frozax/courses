@@ -37,6 +37,13 @@ def courses():
     ret += tpl("footer")
     return ret
 
+@route('/courses/print/')
+def courses_print():
+    ret = tpl("header", title="Courses")
+    ret += model.generate_html_user_list()
+    ret += tpl("footer")
+    return ret
+
 @route('/api/user_list')
 def get_user_list():
     ul = model.get_user_list()
