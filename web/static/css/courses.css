@@ -16,6 +16,7 @@
 
 .div_user_item{
 	width: 140px;
+	cursor: pointer;
 }
 
 .li_user_item{
@@ -36,7 +37,8 @@
 	padding-left: 10px;
 }
 
-.li_product, .li_product_selected{
+.li_product{
+	cursor: pointer;
 	list-style-type: none;
 	margin-top: -8px;
 }
