@@ -14,10 +14,14 @@
 </td></tr></table>
 <script>
 
+var SHOP_LIST = Array();
+var ITEM_NAME_TO_ITEM = {}; // links between name to item
+
 //
 // TODO TODO
 // Récupérer la liste du magasin une fois pour toute, conserver les données brutes à un format qui nous plait (celle du REST par exemple).
 // Puis créer la liste et avec des fonctino set_item_state(id, "user-selected") changer que ce qu'il faut
+// -> Entrer des éléments pas dans la liste
 
 
 // https://codepen.io/anon/pen/LRGQAv
@@ -49,70 +53,95 @@ function update_product_comment(product, comment)
 
 function update_user_list_on_page(user_data)
 {
+	SHOP_LIST.forEach(function(item) { item.selected = false; });
+	
 	var l = $("#user-list");
 	l.html("<ul class=\"split-list\">\n");
 	var ul = l.find(".split-list");
 	var i = 0;
 	user_data.forEach(function(item) {
-		var item_name = "userlistitem" + i;
-		html_item = "<li class=\"li_user_item\"><div class='div_user_item' id=\"" + item_name + "\">" + item[0] + "</div>";
-		html_item += "<div class='div_user_comment'><input id=\"" + item_name + "input\" type=\"text\" value=\"" + item[1] + "\"></div>";
+		actual_item = ITEM_NAME_TO_ITEM[item[0]];
+		actual_item.selected = true;
+		var html_id = "userlistitem" + i;
+		html_item = "<li class=\"li_user_item\"><div class='div_user_item' id=\"" + html_id + "\">" + item[0] + "</div>";
+		html_item += "<div class='div_user_comment'><input id=\"" + html_id + "input\" type=\"text\" value=\"" + item[1] + "\"></div>";
 		html_item += "</li>\n";
 		ul.append(html_item);
-		$("#" + item_name).click({item_name: item[0]}, function(data) { 
-			remove_item(data.data.item_name, null);
+		$("#" + html_id).click({actual_item_param: actual_item}, function(data) { 
+			remove_item(actual_item_param);
 		});
-		$("#" + item_name + "input").change({item_name: item[0]}, function(event) {
-			update_product_comment(event.data.item_name, event.currentTarget.value);
+		$("#" + html_id + "input").change({actual_item_param: actual_item}, function(event) {
+			update_product_comment(actual_item_param, event.currentTarget.value);
 		});
 		i++;
 	});
+	update_shop_list_selections();	
 	layout_list(ul, 70);
 }
 
-function update_shop_list_on_page(shop_data)
+function _toggle_item(item)
+{
+	index = _get_item_index(item_name);
+	var selected = shop_list[index]["selected"];
+	shop_list[index]["selected"] = !shop_list[index]["selected"];
+	if (selected) {
+		remove_item(index);
+		_get_item_selector(item_name).removeClass("selected");
+	}
+	else {
+		add_item(index);
+		_get_item_selector(item_name).addClass("selected");
+	}
+}
+
+// set up the shop list on the page
+function init_shop_list_on_page(data)
 {
 	var l = $("#shop-list");
 	l.html("<ul class=\"split-list\">\n");
 	var ul = l.find(".split-list");
 	var i = 0;
-	shop_data.forEach(function(item) {
-		var item_name = "shoplistitem" + i;
+	data.forEach(function(src_item) {
+		if (src_item.type == "spacer")
+			return;
+
 		var li_class = "";
-		var inner_code = "";
-		if (item[1] == "aisle-name")
+		var item_name = "shoplistitem" + i;
+		if (src_item.type == "aisle")
 		{
 			li_class = "li_aisle";
 		}
-		else if (item[1] == "spacer")
-		{
-			return;
-			//li_class = "li_spacer";
-		}
-		else if (item[1] == "product")
+		else if (src_item.type == "product")
 		{
 			li_class = "li_product";
 		}
-		else if(item[1] == "selected-product")
-		{
-			li_class = "li_product_selected";
-		}
-		var html_item = "<li class=\"" + li_class + "\"><div id='" + item_name + "'>";
-		html_item += item[0];
-		html_item += "</div></li>\n";
+		var html_item = "<li id='" + item_name + "' class='" + li_class + "'>";
+		html_item += src_item.name;
+		html_item += "</li>\n";
 		ul.append(html_item);
-		if (item[1] == "product" || item[1] == "selected-product") {
-			$("#" + item_name).click({item_name: item[0]}, function(data) { 
-				var selected = data.currentTarget.parentNode.className == "li_product_selected";
-				if (selected)
-					remove_item(data.data.item_name, data.currentTarget);
-				else
-					add_item(data.data.item_name, data.currentTarget);
+		if (li_class == "li_product") {
+			var html_obj = $("#" + item_name);
+			item_shop_list = {item: src_item, html_obj: html_obj, selected:false}
+			SHOP_LIST.push(item_shop_list);
+			ITEM_NAME_TO_ITEM[src_item.name] = item_shop_list;
+			html_obj.click({item: item_shop_list}, function(data) { 
+				_toggle_item(item);
 			});
 		}
 		i++;
 	});
 	layout_list(ul, 56);
+}
+
+function update_shop_list_selections()
+{
+	SHOP_LIST.forEach(function(item) {
+		li_class = "li_product_selected";
+		if(item.selected)
+			item.html_obj.addClass(li_class);
+		else
+			item.html_obj.removeClass(li_class);
+	});
 }
 
 function post(url, dict, success)
@@ -124,19 +153,17 @@ function post(url, dict, success)
             success: success});
 }
 
-function remove_item(item, target)
+function remove_item(index_index)
 {
-	post("/api/user_list/remove_item", {item: item}, function(){
-		// success, refresh user list and select our list
+	var item_name = _get_item_name(index_index);
+	_get_item_selector(item_name).removeClass("selected");
+	post("/api/user_list/remove_item", {item: shop_list[item_index]["name"]}, function(){
+		// success, refresh user list
 		refresh_user_list();
-		if (target)
-			target.parentNode.className = "li_product";
-		else
-			refresh_shop_list();
 	});
 }
 
-function add_item(item, target)
+function add_item(index_item)
 {
 	post("/api/user_list/add_item", {item: item}, function() {
 		refresh_user_list();
@@ -147,59 +174,64 @@ function add_item(item, target)
 	});
 }
 
-function refresh_both_lists()
-{
-	refresh_user_list();
-	refresh_shop_list();
-}
-
 function refresh_user_list()
 {
 	$.get("/api/user_list", update_user_list_on_page);
 }
 
-function refresh_shop_list()
-{
-	$.get("/api/shop_list", update_shop_list_on_page);
-}
-
-var elements = [
-% for item in items:
-  { title: '{{item["name"]}}',
-    simplified_name: '{{item["simplified_name"]}}',
-    group: '{{item["aisle"]}}'},
-% end
-];
-
 $(document).ready(function() {
 
-	refresh_user_list();
-	refresh_shop_list();
+	$.get("/api/shop_list", function(data) {
+		init_shop_list_on_page(data);
+		refresh_user_list();
 
-  	// Local source, string array. Simplest setup possible
-	$('#item-autocomplete').betterAutocomplete('init', elements, {}, {
-		select: function(result, $input) { // Custom select callback
-			add_item(result.title, null);
-			$input[0].value = "";
-		},
-		queryLocalResults: function(query, resource, caseSensitive) {
-			var results = [];
-			query = query.unidecode();
-			$.each(resource, function(i, value) {
-				if(value.simplified_name.indexOf(query) >= 0) {
-					// Match found in title field
-					results.push(value);
+		// create autocomplete data
+		var elements = Array();
+		SHOP_LIST.forEach(function (item) {
+			elements.push({"name": item.item.name, "group": item.item.aisle, "simplified_name": item.item.simplified_name});
+		});
+
+		var new_item = true;
+		// Local source, string array. Simplest setup possible
+		$('#item-autocomplete').betterAutocomplete('init', elements, {}, {
+			select: function(result, $input) { // Custom select callback
+				new_item = false;
+				add_item(result.title, null);
+				$input[0].value = "";
+			},
+			queryLocalResults: function(query, resource, caseSensitive) {
+				var results = [];
+				query = query.unidecode();
+				$.each(resource, function(i, value) {
+					if(value.simplified_name.indexOf(query) >= 0) {
+						// Match found in title field
+						results.push(value);
+					}
+				});
+				return results;
+			}
+		}).keydown(function (e) {
+			if(e.keyCode == 13)  // the enter key code
+			{
+				if (new_item)
+				{
+			/*if not self.model.exists(item):
+				if self.view.msg_box_yesno(u"Ajouter %s à la liste?" % item):
+					self.model.add_item_to_shop_list_temporarily(item)
+				else:
+					return None
+			self.model.add_item(item)*/
+					// 
 				}
-			});
-			return results;
-		}
+			}
+			new_item = true; // not known until selected
+		});   
 	});
 
 	$("#clear_list").click(function()
 	{
 		$.get("/api/clear_list", function() {
 			refresh_user_list();
-			refresh_shop_list();
 		});
 	});
 });

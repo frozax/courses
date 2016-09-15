@@ -18,22 +18,8 @@ model = Model()
 
 @route('/courses')
 def courses():
-    items = []
-    cur_aisle = ""
-    for item_name, item_type in model.get_shop_list():
-        if item_type == "aisle-name":
-            cur_aisle = item_name
-        elif item_type == "spacer":
-            continue
-        elif item_type.endswith("product"):
-            items.append({"name": item_name,
-                          "aisle": cur_aisle,
-                          "simplified_name": model.remove_special_chars(item_name)})
-        else:
-            print("Unkown type: %s" % item_type)
-
     ret = tpl("header", title="Courses")
-    ret += tpl("courses", items=items)
+    ret += tpl("courses")
     ret += tpl("footer")
     return ret
 
@@ -52,9 +38,25 @@ def get_user_list():
 
 @route('/api/shop_list')
 def get_shop_list():
-    sl = model.get_shop_list()
+    items = []
+    cur_aisle = ""
+    for item_name, item_type in model.get_shop_list():
+        if item_type == "aisle-name":
+            items.append({"type": "aisle",
+                          "name": item_name})
+            cur_aisle = item_name
+        elif item_type == "spacer":
+            items.append({"type": "spacer"})
+        elif item_type.endswith("product"):
+            items.append({"type": "product",
+                          "name": item_name,
+                          "aisle": cur_aisle,
+                          "simplified_name": model.remove_special_chars(item_name)})
+        else:
+            print("Unkown type: %s" % item_type)
+
     response.content_type = 'application/json'
-    return json.dumps(sl)
+    return json.dumps(items)
 
 @route('/api/user_list/remove_item', method="POST")
 def user_list_remove_item():
