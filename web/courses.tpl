@@ -1,7 +1,7 @@
 <table><tr><td>
 	<div style="display: inline-block">
 		<input type="search" id="item-autocomplete" name="item" />
-		<br /><a class="btn" href="courses/print/"><i class="fa fa-print"></i> Imprimer</a>
+		<br /><a class="btn" href="courses/print/" target="_blank"><i class="fa fa-print"></i> Imprimer</a>
 
 	</div>
 	<div id="user-list">
