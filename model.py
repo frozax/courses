@@ -124,7 +124,11 @@ class Model(object):
 
     def save(self, filename=SAVE_FILE):
         with open(filename, "w") as f:
-            to_save = {"comments": self.comments, "selected_items": self.selected_items}
+            cleaned_comments = {}
+            for c, v in self.comments.items():
+                if v:
+                    cleaned_comments[c] = v
+            to_save = {"comments": cleaned_comments, "selected_items": self.selected_items}
             json.dump(to_save, f, indent=4)
 
     def DBG_add_product_in_first_aisle(self):
