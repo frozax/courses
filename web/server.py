@@ -74,6 +74,11 @@ def update_product_comment():
     model.update_product_comment(item["product"], item["comment"])
     model.save()
 
+@route('/api/clear_list')
+def clear_list():
+    model.clear_user_list();
+    model.save();
+
 @route('/static/<path:path>')
 def static(path):
     return static_file(path, root=os.path.join(PATH, 'static/'))

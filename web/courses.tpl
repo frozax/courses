@@ -1,9 +1,12 @@
 <table><tr><td>
 	<div style="display: inline-block">
 		<input type="search" id="item-autocomplete" name="item" />
-		<a class="btn" href="courses/print/"><i class="fa fa-print"></i> Print</a>
+		<br /><a class="btn" href="courses/print/"><i class="fa fa-print"></i> Imprimer</a>
+
 	</div>
 	<div id="user-list">
+	</div>
+	<div style="clear: both"><br /><br /><a class="btn" href="#" id="clear_list"><i class="fa fa-trash-o"></i> Effacer liste</a>
 	</div>
 </td><td style="width: 100%">
 	<div id="shop-list">
@@ -191,6 +194,14 @@ $(document).ready(function() {
 			});
 			return results;
 		}
+	});
+
+	$("#clear_list").click(function()
+	{
+		$.get("/api/clear_list", function() {
+			refresh_user_list();
+			refresh_shop_list();
+		});
 	});
 });
 
