@@ -185,19 +185,24 @@ $(document).ready(function() {
 				$input[0].value = "";
 			},
 			queryLocalResults: function(query, resource, caseSensitive) {
-				var results = [];
+				var results_data = [];
 				query = query.unidecode();
 				$.each(resource, function(i, value) {
 					var found = value.simplified_name.indexOf(query);
 					if(found >= 0) {
 						// Match found in title field
-						if (found == 0)
-							//add in front if important
-							results.unshift(value);
-						else
-							results.push(value);
+						results_data.push({text: value, found_id: found});
 					}
 				});
+				results_data.sort(function(a, b){
+					// text at different location, returns first the first visible
+					if (a.found_id != b.found_id)
+						return a.found_id - b.found_id;
+					// else returns shorter text
+					return a.text.length - b.text.length;
+				});
+				var results = [];
+				results_data.forEach(function(res){results.push(res.text);});
 				return results;
 			}
 		}).keydown(function (e) {
