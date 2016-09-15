@@ -17,15 +17,7 @@
 var SHOP_LIST = Array();
 var ITEM_NAME_TO_ITEM = {}; // links between name to item
 
-//
-// TODO TODO
-// Récupérer la liste du magasin une fois pour toute, conserver les données brutes à un format qui nous plait (celle du REST par exemple).
-// Puis créer la liste et avec des fonctino set_item_state(id, "user-selected") changer que ce qu'il faut
-// -> Entrer des éléments pas dans la liste
-
-
 // https://codepen.io/anon/pen/LRGQAv
-
 function layout_list(container, max_items_per_col) {
     listItem = 'li',
     listClass = 'sub-list';
@@ -69,7 +61,7 @@ function update_user_list_on_page(user_data)
 		html_item += "<div class='div_user_comment'><input id=\"" + html_id + "input\" type=\"text\" value=\"" + item[1] + "\"></div>";
 		html_item += "</li>\n";
 		ul.append(html_item);
-		$("#" + html_id).click({item_name: item[0]}, function(event) { 
+		$("#" + html_id).click({item_name: item[0]}, function(event) {
 			remove_item(event.data.item_name);
 		});
 		$("#" + html_id + "input").change({item_name: item[0]}, function(event) {
@@ -77,7 +69,7 @@ function update_user_list_on_page(user_data)
 		});
 		i++;
 	});
-	update_shop_list_selections();	
+	update_shop_list_selections();
 	layout_list(ul, 70);
 }
 	
@@ -123,7 +115,7 @@ function init_shop_list_on_page(data)
 			item_shop_list = {item: src_item, html_obj: html_obj, selected:false}
 			SHOP_LIST.push(item_shop_list);
 			ITEM_NAME_TO_ITEM[src_item.name] = item_shop_list;
-			html_obj.click({item: item_shop_list}, function(event) { 
+			html_obj.click({item: item_shop_list}, function(event) {
 				_toggle_item(event.data.item);
 			});
 		}
@@ -202,7 +194,7 @@ $(document).ready(function() {
 						if (found == 0)
 							//add in front if important
 							results.unshift(value);
-						else	
+						else
 							results.push(value);
 					}
 				});
@@ -215,7 +207,7 @@ $(document).ready(function() {
 				add_item(e.currentTarget.value);
 			}
 			new_item = true; // not known until selected
-		});   
+		});
 	});
 
 	$("#clear_list").click(function()
