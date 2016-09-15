@@ -104,7 +104,6 @@ function update_shop_list_on_page(shop_data)
 		if (item[1] == "product" || item[1] == "selected-product") {
 			$("#" + item_name).click({item_name: item[0]}, function(data) { 
 				var selected = data.currentTarget.parentNode.className == "li_product_selected";
-				console.log(selected);
 				if (selected)
 					remove_item(data.data.item_name, data.currentTarget);
 				else
