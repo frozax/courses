@@ -205,7 +205,7 @@ $(document).ready(function() {
 					if (a.found_id != b.found_id)
 						return a.found_id - b.found_id;
 					// else returns shorter text
-					return a.text.length - b.text.length;
+					return a.text.title.length - b.text.title.length;
 				});
 				var results = [];
 				results_data.forEach(function(res){results.push(res.text);});
