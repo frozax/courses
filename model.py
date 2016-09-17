@@ -1,27 +1,27 @@
-#!/usr/bin/python2
 # coding: utf-8
 
 import json
-import sys
 import unidecode
+import sys
 
 SAVE_FILE = "save.json"
 HTML_START = "<b><u>"
 HTML_END = "</u></b>"
 
 class Model(object):
-    def __init__(self):
+    def __init__(self, shop="carrefour-vaulx.json", order_id=1):
         # list of aisles
-        self.shop = json.load(open("carrefour-vaulx.json"))
+        with open(shop) as f:
+            self.shop = json.load(f)
         self.aisles = self.shop["rayons"]
-        self.orders = self.shop["orders"][1]
+        self.orders = self.shop["orders"][order_id]
         self.order = self.orders["order"]
         aisles_used = [a["name"] for a in self.aisles]
         assert len(set(self.order)) == len(self.order)
         assert len(set(aisles_used)) == len(aisles_used)
         missing_aisles = set(aisles_used) - set(self.order)
         if len(missing_aisles) > 0:
-            print "Missing aisles in order: %s" % str(missing_aisles)
+            print("Missing aisles in order: %s" % str(missing_aisles))
             sys.exit(1)
 
         # sort shop accord to self.order
@@ -55,8 +55,8 @@ class Model(object):
         self.selected_items = []
 
     def get_shop_list(self):
-        # return list of 3-tuples:
-        #  text, selectable (or not), selected (or not)
+        # return list of 2-tuples:
+        #  text, status
         ret = []
         for aisle in self.shop["rayons"]:
             if "name" in aisle and "products" in aisle:
@@ -124,7 +124,11 @@ class Model(object):
 
     def save(self, filename=SAVE_FILE):
         with open(filename, "w") as f:
-            to_save = {"comments": self.comments, "selected_items": self.selected_items}
+            cleaned_comments = {}
+            for c, v in self.comments.items():
+                if v:
+                    cleaned_comments[c] = v
+            to_save = {"comments": cleaned_comments, "selected_items": self.selected_items}
             json.dump(to_save, f, indent=4)
 
     def DBG_add_product_in_first_aisle(self):
@@ -175,7 +179,10 @@ class Model(object):
 
     def generate_html_user_list(self):
         def enc(text):
-            return text.encode('ascii', 'xmlcharrefreplace')
+            if sys.version_info[0] < 3:
+                return text.encode('ascii', 'xmlcharrefreplace')
+            else:
+                return text
 
         html = u"<html><p style=\"font-family: Arial\">"
         prev_aisle = None

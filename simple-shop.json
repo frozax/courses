@@ -2,7 +2,17 @@
 	"rayons": [
 	{
 		"name": "simple",
-		"products": []
+		"products": ["no accent", "avec accènt"]
+	},
+	{
+		"name": "2",
+		"products": ["truc", "thing", "stuff"]
 	}
+	],
+	"orders": [
+		{
+			"name": "default",
+			"order": ["simple", "2"]
+		}
 	]
 }

@@ -1,0 +1,56 @@
+#user-list ul, #shop-list ul{
+	padding-left: 0px;
+}
+
+#user-list ul li div {
+	display: inline-block;
+}
+
+#user-list li{
+	margin-top: -4px;
+}
+
+.div_user_comment, .div_user_comment input{
+	width: 50px;
+}
+
+.div_user_item{
+	width: 140px;
+	cursor: pointer;
+}
+
+.not_in_shop{
+	color: #d00
+}
+
+.li_user_item{
+	list-style-type: none;
+	width: 200px;
+}
+
+#shop-list li{
+	white-space: nowrap;
+	width: 130px;
+	font-size: 0.9em;
+}
+
+.li_aisle{
+	list-style-type: none;
+    font-weight: bold;
+	font-size: 1.1em;
+	padding-left: 10px;
+}
+
+.li_product{
+	cursor: pointer;
+	list-style-type: none;
+	margin-top: -8px;
+}
+
+.li_product_selected{
+	color: #f00
+}
+
+table td, table td * {
+	vertical-align: top;
+}

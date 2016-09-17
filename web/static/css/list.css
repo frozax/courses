@@ -1,0 +1,10 @@
+.split-list ul{
+  float: left;
+  margin-left: 1em;
+}
+.split-list li{
+  /*padding-right: 2em; */
+  line-height: 1.5em;
+  @include font-size(12px);
+}
+
