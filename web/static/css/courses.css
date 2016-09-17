@@ -19,6 +19,10 @@
 	cursor: pointer;
 }
 
+.not_in_shop{
+	color: #d00
+}
+
 .li_user_item{
 	list-style-type: none;
 	width: 200px;

@@ -52,12 +52,18 @@ function update_user_list_on_page(user_data)
 	var ul = l.find(".split-list");
 	var i = 0;
 	user_data.forEach(function(item) {
-		if (item[0] in ITEM_NAME_TO_ITEM) {
+		// item[0]: name
+		// item[1]: aisle
+		// item[2]: is not in shop
+		var is_in_shop = ! item[2];
+		var not_in_shop_class = " not_in_shop"
+		if (is_in_shop) {
 			actual_item = ITEM_NAME_TO_ITEM[item[0]];
 			actual_item.selected = true;
+			not_in_shop_class = ""
 		}
 		var html_id = "userlistitem" + i;
-		html_item = "<li class=\"li_user_item\"><div class='div_user_item' id=\"" + html_id + "\">" + item[0] + "</div>";
+		html_item = "<li class=\"li_user_item\"><div class='div_user_item" + not_in_shop_class + "' id=\"" + html_id + "\">" + item[0] + "</div>";
 		html_item += "<div class='div_user_comment'><input id=\"" + html_id + "input\" type=\"text\" value=\"" + item[1] + "\"></div>";
 		html_item += "</li>\n";
 		ul.append(html_item);
