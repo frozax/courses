@@ -14,7 +14,7 @@
 	},
 	{
 		"name": "73",
-		"products": ["cahier", "classement", "crayon velleda", "ecriture", "colle enfant", "scotch enfant", "gomme", "feutres", "crayons de couleur", "cartable"]
+		"products": ["ciseaux", "cahier", "classement", "crayon velleda", "ecriture", "colle enfant", "scotch enfant", "gomme", "feutres", "crayons de couleur", "cartable"]
 	},
 	{
 		"name": "71",
@@ -34,7 +34,7 @@
 	},
 	{
 		"name": "64",
-		"products": ["colle adule", "scotch adulte", "peinture", "quincaillerie", "eau déminéralisée"]
+		"products": ["pochettes plastiques", "colle adule", "scotch adulte", "peinture", "quincaillerie", "eau déminéralisée"]
 	},
 	{
 		"name": "62",
@@ -101,7 +101,7 @@
 	},
 	{
 		"name": "43",
-		"products": ["gel douche", "dentifrice", "brosse à dent", "savon", "serviette hygienique", "protège slips"]
+		"products": ["coupe ongles", "gel douche", "dentifrice", "brosse à dent", "savon", "serviette hygienique", "protège slips"]
 	},
 	{
 		"name": "42",
@@ -181,7 +181,7 @@
 	},
 	{
 		"name": "18",
-		"products": ["biscottes", "pain grillé", "chocapic", "miel pops", "cocopops", "chocapic noisette", "compotes à boire", "fruits au sirop", "barre céréales"]
+		"products": ["cracottes", "biscottes", "pain grillé", "chocapic", "miel pops", "cocopops", "chocapic noisette", "compotes à boire", "fruits au sirop", "barre céréales"]
 	},
 	{
 		"name": "boulangerie",
