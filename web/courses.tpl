@@ -216,6 +216,7 @@ $(document).ready(function() {
 			{
 				// add it anyway
 				add_item(e.currentTarget.value);
+				e.currentTarget.value = "";
 			}
 			new_item = true; // not known until selected
 		});
