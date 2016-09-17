@@ -200,6 +200,17 @@ $(document).ready(function() {
 						results_data.push({text: value, found_id: found});
 					}
 				});
+				if (results_data.length == 0) {
+					// no results, use regex
+					var query_regex = query.replace(/\s/g, ".*");
+					var re = RegExp(query_regex, "g");
+					$.each(resource, function(i, value) {
+						if(value.simplified_name.match(re)) {
+							// Match found in title field
+							results_data.push({text: value, found_id: 0});
+						}
+					});
+				}
 				results_data.sort(function(a, b){
 					// text at different location, returns first the first visible
 					if (a.found_id != b.found_id)
