@@ -1,0 +1,9 @@
+[Unit]
+Description=Courses Webapp
+
+[Service]
+ExecStart=/home/francois/code/courses/web.py
+WorkingDirectory=/home/francois/code/courses
+
+[Install]
+WantedBy=multi-user.target
