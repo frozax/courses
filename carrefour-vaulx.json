@@ -136,7 +136,7 @@
 	},
 	{
 		"name": "33",
-		"products": ["insecticide", "eau de javel", "désodorisant", "nettoyant sol", "vitroclen", "viakal", "wc net", "debouche evier", "gants roses"]
+		"products": ["insecticide", "eau de javel", "désodorisant", "nettoyant sol", "st marc", "vitroclen", "viakal", "wc net", "debouche evier", "gants roses"]
 	},
 	{
 		"name": "32",
@@ -232,7 +232,7 @@
 	},
 	{
 		"name": "7",
-		"products": ["sirop grenadine", "jus d'orange", "jus de fruits", "sucre poudre", "sucre morceaux", "sucre vanillé", "farine", "amandes poudres", "préparation dessert", "raisins secs", "pépites de chocolat", "noix morceaux", "vanille", "gousse vanille", "bougie anniv", "fécule de pomme de terre", "levure"]
+		"products": ["sirop grenadine", "citror", "jus d'orange", "jus de fruits", "sucre poudre", "sucre morceaux", "sucre vanillé", "farine", "amandes poudres", "préparation dessert", "raisins secs", "pépites de chocolat", "noix morceaux", "vanille", "gousse vanille", "bougie anniv", "fécule de pomme de terre", "levure"]
 	},
 	{
 		"name": "6",
@@ -244,7 +244,7 @@
 	},
 	{
 		"name": "3",
-		"products": ["bière", "chips", "gâteaux apéros", "cidre"]
+		"products": ["bière", "chips", "gâteaux apéros", "cacahuètes", "cidre"]
 	},
 	{
 		"name": "2",
