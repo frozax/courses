@@ -18,7 +18,7 @@
 	},
 	{
 		"name": "71",
-		"products": ["filtre piscine"]
+		"products": ["filtre piscine", "chlore piscine"]
 	},
 	{
 		"name": "informatique",
@@ -212,7 +212,7 @@
 	},
 	{
 		"name": "12",
-		"products": ["cookies", "goûters", "petits écoliers", "pepito chocolat", "savane abricot", "rond choco", "rond choco blanc", "BN fraise", "BN chocolat", "BN lait petit", "ptits chatons", "kinder"]
+		"products": ["cookies", "goûters", "petits écoliers", "pepito chocolat", "savane abricot", "rond choco", "rond choco blanc", "BN fraise", "BN chocolat", "BN lait petit", "ptits chatons", "kinder", "rond prince"]
 	},
 	{
 		"name": "11",
@@ -232,7 +232,7 @@
 	},
 	{
 		"name": "7",
-		"products": ["sirop grenadine", "citror", "jus d'orange", "jus de fruits", "sucre poudre", "sucre morceaux", "sucre vanillé", "farine", "amandes poudres", "préparation dessert", "raisins secs", "pépites de chocolat", "noix morceaux", "vanille", "gousse vanille", "bougie anniv", "fécule de pomme de terre", "levure"]
+		"products": ["sirop grenadine", "jus d'orange", "jus de fruits", "sucre poudre", "sucre morceaux", "sucre vanillé", "farine", "amandes poudres", "préparation dessert", "raisins secs", "pépites de chocolat", "noix morceaux", "vanille", "gousse vanille", "bougie anniv", "fécule de pomme de terre", "levure"]
 	},
 	{
 		"name": "6",
@@ -244,7 +244,7 @@
 	},
 	{
 		"name": "3",
-		"products": ["bière", "chips", "gâteaux apéros", "cacahuètes", "cidre"]
+		"products": ["bière", "chips", "gâteaux apéros", "pistaches", "cacahuètes", "cidre"]
 	},
 	{
 		"name": "2",
@@ -252,7 +252,7 @@
 	},
 	{
 		"name": "1",
-		"products": ["brique jus de fruits", "eau grande bouteille", "eau petite bouteille", "champomy"]
+		"products": ["brique jus de fruits", "citror", "eau grande bouteille", "eau petite bouteille", "champomy"]
 	},
 	{
 		"name": "maison",
